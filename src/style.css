@@ -55,3 +55,20 @@
 /* Keep release visible at the top on narrow screens as well. */
 .release-version{color:var(--mint);font:12px var(--mono);white-space:nowrap;flex-shrink:0}
 .inventory-entry{margin:12px 25px}.inventory-entry>p,.optional-capstone>p{margin:10px 0}
+
+/* Optional follow-up exercises share the investigation's dialog and stay outside its grade. */
+.extension-invitation{margin:18px 0;padding:14px;border:1px solid var(--line);border-radius:8px;background:var(--panel2)}
+.extension-invitation p{margin:6px 0}
+.extension-table{max-width:100%;margin:18px 0;border:1px solid var(--line);border-radius:6px}
+.extension-table table{min-width:580px;width:100%;font-size:12px}
+.extension-table caption{text-align:left;padding:12px;color:var(--muted);white-space:normal}
+.extension-table td,.extension-table th{white-space:normal;overflow-wrap:anywhere;vertical-align:top}
+.extension-exercise fieldset{margin:24px 0}
+.extension-feedback h4{font-size:13px;margin:16px 0 4px}
+.extension-feedback p{font-size:13px}
+.extension-takeaway{padding-top:12px;border-top:1px solid var(--line)}
+.practice-notes{margin:20px 0;padding:14px 16px;border:1px solid var(--line);border-radius:8px;background:var(--panel2)}
+.practice-notes summary{font-weight:600;color:var(--mint)}
+.practice-notes section{margin-top:14px}
+.practice-notes p{font-size:13px}
+.extension-table:focus-visible,.practice-notes summary:focus-visible{outline:2px solid var(--mint);outline-offset:3px}

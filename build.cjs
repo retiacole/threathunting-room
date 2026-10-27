@@ -3,7 +3,7 @@ const fs=require('node:fs');const path=require('node:path');
 const root=__dirname;const {tasks,environments}=require('./src/catalog.cjs');
 const {createPublicBundle}=require('./src/public-data.cjs');
 const data=createPublicBundle({tasks,environments});
-const translations=Object.assign({},require('./src/content-capstone.cjs').translations,...['i18n-ui.en.json','i18n-part1.en.json','i18n-part2.en.json'].map(name=>JSON.parse(fs.readFileSync(path.join(root,'src',name),'utf8'))));
+const translations=Object.assign({},require('./src/content-capstone.cjs').translations,require('./src/content-extensions.cjs').translations,require('./src/content-practice-notes.cjs').translations,...['i18n-ui.en.json','i18n-part1.en.json','i18n-part2.en.json'].map(name=>JSON.parse(fs.readFileSync(path.join(root,'src',name),'utf8'))));
 let html=fs.readFileSync(path.join(root,'src/shell.html'),'utf8');
 const values=[['/* TRANSLATIONS */',JSON.stringify(translations).replace(/</g,'\\u003c')],['/* I18N */',fs.readFileSync(path.join(root,'src/i18n.js'),'utf8')],['/* STYLES */',fs.readFileSync(path.join(root,'src/style.css'),'utf8')],['/* DATA */',JSON.stringify(data).replace(/</g,'\\u003c')],['/* ENGINE */',fs.readFileSync(path.join(root,'src/engine.js'),'utf8')],['/* APP */',['tutorial.js','reports.js','course-views.js','views.js','app.js'].map(name=>fs.readFileSync(path.join(root,'src',name),'utf8')).join('\n')]];
 for(const [token,value] of values)html=html.replace(token,()=>value);

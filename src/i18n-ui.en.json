@@ -747,5 +747,20 @@
   "時刻の確認例を見る": "Show the time example",
   "2026-09-14 15:00 UTC = 2026-09-15 00:00 JST。9月15日JSTは9月14日15:00 UTCから9月15日15:00 UTC未満です。検索式のafter: / before:はUTCの日付なので、この範囲には日付欄のJST指定を使います。": "2026-09-14 15:00 UTC = 2026-09-15 00:00 JST. September 15 JST spans September 14 15:00 UTC inclusive to September 15 15:00 UTC exclusive. Query after: / before: use UTC dates; use the date fields with JST selected for this interval.",
   "支持は自分の仮説を裏付ける事実、反証は仮説と異なる説明、背景は比較や条件、観測不足は記録の限界を示します。": "Support backs your hypothesis; counterevidence supports a different explanation; context provides comparisons or conditions; gaps describe collection limits.",
-  "同じ記録でも仮説によって役割が変わります。この自主ハントでは、役割がそろっていることとメモの記入だけを確認します。関連性・役割・文章の意味は自動判定しません。自分の仮説と解説の観点を使って確かめてください。": "The same record can have different roles for different hypotheses. This independent hunt checks only that roles and notes are present. Relevance, roles and prose meaning are not automatically judged. Review them against your hypothesis and the explanation criteria."
+  "同じ記録でも仮説によって役割が変わります。この自主ハントでは、役割がそろっていることとメモの記入だけを確認します。関連性・役割・文章の意味は自動判定しません。自分の仮説と解説の観点を使って確かめてください。": "The same record can have different roles for different hypotheses. This independent hunt checks only that roles and notes are present. Relevance, roles and prose meaning are not automatically judged. Review them against your hypothesis and the explanation criteria.",
+  "実務では": "In practice",
+  "本編とは別の任意の追加体験です。": "This optional exercise is separate from the main task.",
+  "追加体験を振り返る": "Review the optional exercise",
+  "もう少し試す": "Try a little more",
+  "本編の完了と次の課題への進行には影響しません。": "This exercise does not affect main-task completion or access to the next task.",
+  "追加体験の資料": "Optional exercise data",
+  "追加体験の回答を確認する": "Check the optional exercise answers",
+  "追加体験を完了しました": "Optional exercise complete",
+  "資料と回答をもう一度確かめましょう": "Review the data and your answers",
+  "課題へ戻る": "Return to the task",
+  "追加体験の回答": "Optional exercise answers",
+  "追加体験の回答の形式が正しくありません。": "The optional exercise answers have an invalid format.",
+  "追加体験の回答に使用できない項目があります。": "The optional exercise answers contain an unsupported property.",
+  "追加体験にない質問が含まれています。": "An answer refers to a question that is not in this optional exercise.",
+  "追加体験の選択肢の形式または値が正しくありません。": "An optional exercise choice has an invalid format or value."
 }
