@@ -85,8 +85,6 @@ Open an issue with the lesson name, reproduction steps, expected result, actual 
 
 [MIT License](LICENSE). You may use, modify, and redistribute the project while retaining the copyright and license notice. External reference materials remain the property of their respective rights holders.
 
-The character artwork and illustrations appear in the GitHub introduction. They are not embedded in the learning app.
-
 <p align="center">
-  <img src="docs/images/threathunting-room-ending.png" width="100%" alt="The green-hooded ranger joins the six room-series companions as they walk toward a distant castle">
+  <img src="docs/images/threathunting-room-ending.png" width="100%" alt="The six room-series companions, including the green-hooded ranger, walk toward a distant castle">
 </p>

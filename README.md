@@ -85,8 +85,6 @@ ThreatHunting-roomは、架空の環境と合成ログを使う**学習用シミ
 
 [MIT License](LICENSE)。著作権表示とライセンス文を残したうえで、利用・改変・再配布できます。外部の参考資料はそれぞれの権利者に帰属します。
 
-キャラクターとイラストはGitHubの紹介ページに掲載しています。学習用HTMLには組み込んでいません。
-
 <p align="center">
   <img src="docs/images/threathunting-room-ending.png" width="100%" alt="緑のフードのハンターが加わり、城へ向かって歩くroomシリーズの6人の仲間たち">
 </p>
