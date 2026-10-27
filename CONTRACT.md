@@ -1,4 +1,4 @@
-# ThreatHunting-room v0.7.0 data contract
+# ThreatHunting-room v0.8.0 data contract
 
 ## Distribution and catalog
 
@@ -8,6 +8,7 @@ One offline HTML; no runtime network, external libraries or web server. `catalog
 - Part 1: i01..i06 (I), p01..p06 (P), f01..f03 (F), preserving 15 investigations.
 - Part 2: A4, B3, C5, D3, E3, L3, G2 = 23 tasks.
 - Nine exits attach to existing practice/field tasks, not separate tasks.
+- A03/F01/F03 each have two optional extension questions. They do not add tasks or change the 38 main lessons, tutorial, optional X01, or nine exits.
 
 The canonical environment contains 20 assets and the union of environment/operations logs. Asset `id` is the inventory-record ID; `device_id` is the telemetry identifier. Shared task definitions use `{part:2,chapter,environment,logIds}`. Hydration resolves logs and assets; targets include unobserved inventory hosts. Each snapshot is independent of completion order. The UI explains why counts differ across tasks. Duplicate IDs or missing references fail loading. Build embeds `{version:6,tasks,environments}`, serializing shared logs/assets once.
 
@@ -57,6 +58,8 @@ Optional choices/selectionOptions are arrays of {id,label}, with choiceLabel/sel
 
 An exit contains title, kind, prompt, choices/selectionOptions, modelReflection, rubric, explanation, and optionally logs. gradeExit uses exit logs if supplied, otherwise investigation logs. Controller/validation gate exit completion on investigation completion. Adding an exit does not erase investigation completion.
 
+Optional `practiceNotes:[{title,body}]` belong to I06/C01/C05/G02 tasks and P03/P04/F01 exits. `content-practice-notes.cjs` exports `{applyPracticeNotes,translations}`; the function returns a task array with notes attached after exits exist, without changing source tasks, logs or rubrics. Each note contains two to four sentences of ungraded, collapsible explanation. All titles and bodies have English translations. Notes explain practical follow-up without introducing organization-specific workflow assessments, ownership states or responsibility-transfer controls.
+
 ## Pure engine API
 
 CommonJS exports and browser THEngine:
@@ -68,6 +71,7 @@ CommonJS exports and browser THEngine:
 - Both grouping functions support parent_process as a pair with values:{parent,process}. Display keys are not identity; pivots use two terms.
 - gradeQuery(logs,query,spec) → {passed,errors,matched,missing,unexpected,precision,recall,validation?}.
 - gradeTask(task,draft,operations) and gradeExit(task,exitDraft) → {passed,earned,total,criteria,query?}.
+- gradeExtension(task,answers) → {passed,earned,total,criteria:[{id,passed}]}. It grades only the optional extension's structured choices; prerequisite completion is enforced by the controller and progress validator. Its result never changes investigation or exit grading.
 - validateProgress(value,tasks) → normalized safe v3 state, or throws for invalid containers/oversized input.
 
 ## Progress
@@ -86,6 +90,7 @@ CommonJS exports and browser THEngine:
       operations:[],completed:false,hintLevel:0,guideStep:0,
       filters:{query:'',source:'',host:'',period:'current',from:'',to:'',timezone:'UTC'},
       exitDraft:{/* same draft shape */},exitCompleted:false,
+      extensionAnswers:{/* questionId: optionId */},extensionCompleted:false,
       tutorialActions:[]
     }
   },
@@ -98,6 +103,10 @@ CommonJS exports and browser THEngine:
 Bound input to 4 MB, evidence to eight rows, query to 2000 characters, hypothesis/reflection/limitations/nextAction to 4000, summary to 12000. Normalize unknown choices/targets/IDs safely. Escape displayed text and protect spreadsheet formulas in CSV.
 
 Accept v1/v2/v3. Apply legacy hypothesis/finding/target mappings only to v1; empty mappings clear changed meanings. Recompute completion from current rubrics. Invalid syntax remains an editable incomplete draft. Preserve unrelated tasks and notes. Retain localStorage key threat-hunting-room.progress.v1, writing v3. Import must not overwrite incoming filters with stale screen filters.
+
+Optional extensions retain schema3. Their selected question/option IDs are stored in `extensionAnswers`, and `extensionCompleted` is recomputed from the answers and prerequisite completion on restore. A03 requires investigation completion; F01/F03 require both investigation and exit completion. Old saves without extension fields receive empty answers and an incomplete extension without losing valid investigation/exit completion. Incorrect extension answers do not revoke main completion or block navigation. Practice notes have no answer state or completion requirement.
+
+The optional `task.extension` content shape is `{title,intro,minutes,table:{caption,columns:[{key,label}],rows:[]},questions:[{id,prompt,options:[{id,label}],answer,explanation}],takeaway}`. Each of the three extensions has two questions and a separate small example. Extension materials do not add investigation evidence, alter fixed query result sets, or redefine the original conclusion.
 
 ## Tutorial and exports
 
@@ -118,3 +127,12 @@ Engine/content tests and controller-handler tests cover 38 investigations, nine 
 - `checkOpenQuery` runs in all periods/all sources/all hosts independently of exploratory filters. A nonempty valid query must retrieve every selected record without matching the entire corpus. It returns an open-hunt result without precision/recall. No semantic grading or held-out detection claim is made. Reports name this structural status explicitly.
 - A01 retains its 1470 rows and checklist. Its optional entry aid clears exploratory filters only when the learner requests collection records; the time exercise is an ungraded revealable example.
 - `releaseVersion` comes from package.json, is embedded in public data and shown in the top header on all viewport sizes and in both languages. Bundle encoding stays version6 and progress stays schema3. Existing v1/v2/v3 imports do not acquire capstone state.
+
+## v0.8 optional practice and explanation boundary
+
+- A03 uses a separate delayed-delivery example to distinguish event time from ingestion time. Its original collection-gap investigation and conclusion remain unchanged.
+- F01 groups five records into two candidates by endpoint and execution ID and accounts for duplicate delivery. This is a bounded grouping exercise, not a complete detection or alert-correlation engine.
+- F03 examines a later test after logging improvements. Newly available object details do not restore the earlier missing records or change the original insufficient-visibility conclusion.
+- C03 labels distinguish stored-object hash matches from execution and subsequent activity; the existing evidence and completion criteria remain unchanged.
+- Optional questions open from “Try a little more” after the relevant prerequisites, with materials and two structured questions in a dialog. The learner can continue to another task without completing them. Investigation, exit and extension completion are distinct.
+- I06/P03/P04/C01/F01/C05/G02 practical notes are ungraded. No D04/G03 tasks, full detection engine, responsibility-transfer UI or organizational workflow assessment is introduced.

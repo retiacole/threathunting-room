@@ -337,6 +337,34 @@
     return gradeTask({...task, ...exit, logs: exit.logs || task && task.logs || [], rubric: exit.rubric || {}}, exitDraft, []);
   }
 
+  // Extensions are optional decisions after an investigation, never part of its rubric.
+  function extensionQuestions(task) {
+    const questions = task && task.extension && task.extension.questions;
+    const id = value => typeof value === 'string' && value.length > 0 && value.length <= 200 && !value.includes('\u0000') && !['__proto__', 'constructor', 'prototype'].includes(value);
+    if (!isArray(questions) || !questions.length || questions.length > 100) return null;
+    const seen = new Set();
+    for (const question of questions) {
+      if (!question || !id(question.id) || seen.has(question.id) || !isArray(question.options) || !question.options.length || question.options.length > 100) return null;
+      seen.add(question.id);
+      const options = question.options.map(option => option && option.id);
+      if (options.some(option => !id(option)) || unique(options).length !== options.length || !options.includes(question.answer)) return null;
+    }
+    return questions;
+  }
+
+  function gradeExtension(task, answers) {
+    const questions = extensionQuestions(task);
+    if (!questions) return {passed: false, earned: 0, total: 0, criteria: []};
+    const plain = answers && typeof answers === 'object' && !isArray(answers) && [Object.prototype, null].includes(Object.getPrototypeOf(answers));
+    const valid = plain && Object.keys(answers).every(key => {
+      const question = questions.find(item => item.id === key);
+      return question && typeof answers[key] === 'string' && answers[key].length <= 200 && (answers[key] === '' || question.options.some(option => option.id === answers[key]));
+    });
+    const criteria = questions.map(question => ({id: question.id, passed: Boolean(valid && own(answers, question.id) && answers[question.id] === question.answer)}));
+    const earned = criteria.filter(criterion => criterion.passed).length;
+    return {passed: earned === criteria.length, earned, total: criteria.length, criteria};
+  }
+
   function validateProgress(value, tasks) {
     const fail = message => { throw new Error('進捗ファイルを読み込めません。' + message); };
     const plain = (obj, label) => {
@@ -408,6 +436,21 @@
     const normalizeDates = (range, label) => {
       if ((range.from && !Number.isFinite(dayStamp(range.from))) || (range.to && !Number.isFinite(dayStamp(range.to)))) fail(label + 'の日付は実在する日付をYYYY-MM-DDで指定してください。');
       if (range.from && range.to && range.from > range.to) fail(label + 'の開始日は終了日以前にしてください。');
+    };
+    const normalizeExtension = (input, task) => {
+      if (input == null) return {};
+      const rawAnswers = plain(input, '追加体験の回答');
+      const keys = Object.keys(rawAnswers), questions = extensionQuestions(task) || [];
+      if (keys.length > 100 || keys.some(key => !questions.some(question => question.id === key))) fail('追加体験にない質問が含まれています。');
+      const answers = {};
+      for (const key of keys) {
+        const selected = rawAnswers[key];
+        if (selected === '') continue;
+        const question = questions.find(item => item.id === key);
+        if (typeof selected !== 'string' || selected.length > 200 || !question.options.some(option => option.id === selected)) fail('追加体験の選択肢の形式または値が正しくありません。');
+        answers[key] = selected;
+      }
+      return answers;
     };
     const normalizeDraft = (rawDraft, task, legacy) => {
       plain(rawDraft, '回答');
@@ -491,10 +534,12 @@
       else if (guideStep > (task.guide || []).length) fail('ガイドの進捗を確認してください。');
       const completed = gradeTask(task, draft, operations).passed;
       const exitCompleted = Boolean(task.exit && completed && gradeExit(task, exitDraft).passed);
-      normalized.taskStates[id] = {draft, operations, completed, hintLevel, guideStep, filters, exitDraft, exitCompleted, tutorialActions};
+      const extensionAnswers = normalizeExtension(raw.extensionAnswers, task);
+      const extensionCompleted = Boolean(completed && (!task.exit || exitCompleted) && gradeExtension(task, extensionAnswers).passed);
+      normalized.taskStates[id] = {draft, operations, completed, hintLevel, guideStep, filters, exitDraft, exitCompleted, tutorialActions, extensionAnswers, extensionCompleted};
     });
     return normalized;
   }
 
-  return Object.freeze({parseQuery, filterLogs, aggregateLogs, compareLogs, gradeQuery, checkOpenQuery, gradeTask, gradeExit, validateProgress});
+  return Object.freeze({parseQuery, filterLogs, aggregateLogs, compareLogs, gradeQuery, checkOpenQuery, gradeTask, gradeExit, gradeExtension, validateProgress});
 });

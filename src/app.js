@@ -13,11 +13,11 @@
   const OPERATIONS = {search:'検索',aggregate:'集計',compare:'通常期間との比較',pivot:'関連記録への追跡'};
   const esc = value => String(value == null ? '' : value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
   const emptyFilters = task => ({query:'',source:'',host:'',period:'current',from:'',to:'',timezone:task?.periods?.current?.timezone||'UTC'});
-  const freshUI = () => ({task:null,level:'intro',part:1,chapter:'I',aggregateSort:'count-desc',queryResult:null,exitQueryResult:null,exitGrade:null,tab:'logs',reportTab:'evidence',filters:emptyFilters(),page:0,group:'host',aggregateRan:false,compareRan:false,compareSource:'',compareField:'host',grade:null,guideVisible:true});
+  const freshUI = () => ({task:null,level:'intro',part:1,chapter:'I',aggregateSort:'count-desc',queryResult:null,exitQueryResult:null,exitGrade:null,extensionGrade:null,tab:'logs',reportTab:'evidence',filters:emptyFilters(),page:0,group:'host',aggregateRan:false,compareRan:false,compareSource:'',compareField:'host',grade:null,guideVisible:true});
   const PIVOT_FIELDS = ['host','user','source','sensor','process','destination','parent','session','pid','process_guid','parent_process_guid','request_id','device_id','hash','parent_process'];
   const queryValue = value => '"'+String(value).replace(/\\/g,'\\\\').replace(/"/g,'\\"')+'"';
   let tasks, releaseVersion='', environments={}, saved = {schemaVersion:3,taskStates:{},lastTask:null,activeTask:null,timeDisplay:'utc'};
-  let ui = freshUI(), storageWarning = '', pendingImport = null, toastTimer;
+  let ui = freshUI(), storageWarning = '', pendingImport = null, toastTimer, extensionDialogOpen = false;
   try {
     const data = JSON.parse(document.getElementById('task-data').textContent);
     tasks = Array.isArray(data) ? data : data.tasks;
@@ -83,7 +83,7 @@
   }
   function blankState(task) {
     const draft={hypothesis:'',ownHypothesis:'',reviewedHypothesis:'',query:'',choice:'',selections:[],reflection:'',reviewedReflection:'',targets:[],verdict:'',sources:[],from:task.periods.current.from,to:task.periods.current.to,finding:'',alternative:'',evidence:[],summary:'',limitations:'',nextAction:''};
-    return {draft,operations:[],completed:false,hintLevel:0,guideStep:0,filters:{...emptyFilters(task),...(task.initialFilters||{})},exitDraft:{...draft,from:'',to:'',targets:[],sources:[],evidence:[],selections:[]},exitCompleted:false,tutorialActions:[]};
+    return {draft,operations:[],completed:false,hintLevel:0,guideStep:0,filters:{...emptyFilters(task),...(task.initialFilters||{})},exitDraft:{...draft,from:'',to:'',targets:[],sources:[],evidence:[],selections:[]},exitCompleted:false,extensionAnswers:{},extensionCompleted:false,tutorialActions:[]};
   }
   function currentState() {
     const task=currentTask();
@@ -92,6 +92,8 @@
     return saved.taskStates[task.id];
   }
   function persist(syncFilters=true) {
+    const state=saved.taskStates[ui.task];
+    if(state&&!window.THCourse.extensionReady(currentTask(),state)){state.extensionCompleted=false;ui.extensionGrade=null;}
     if(syncFilters)saved.activeTask=ui.task;
     if(syncFilters&&ui.task&&saved.taskStates[ui.task])saved.taskStates[ui.task].filters={...ui.filters};
     try { localStorage.setItem(KEY,JSON.stringify(saved)); }
@@ -144,6 +146,7 @@
     if(id==='tutorial'&&state.guideStep>8&&!state.tutorialActions.includes('viewed-solution'))state.guideStep=8;
     if (state.completed) ui.grade=E.gradeTask(task,state.draft,state.operations);
     if(state.exitCompleted&&task.exit)ui.exitGrade=E.gradeExit(task,state.exitDraft);
+    if(state.extensionCompleted&&task.extension)ui.extensionGrade=E.gradeExtension(task,state.extensionAnswers);
     if(id==='tutorial'){const step=task.guide[state.guideStep];ui.tab=step?.tab==='report'?'logs':step?.tab||'logs';if(step?.reportTab&&step.focus!=='report-tabs')ui.reportTab=step.reportTab;}
     else saved.lastTask=id;
     if (changeRoute!==false) setRoute(id);
@@ -189,12 +192,25 @@
     ui.page=0;ui.aggregateRan=false;
     searchPerformed();persist();render();
   }
-  function closeDialog() { if(dialog.open)dialog.close();pendingImport=null; }
+  function closeDialog() {
+    const returnToExtension=extensionDialogOpen;
+    if(dialog.open)dialog.close();pendingImport=null;extensionDialogOpen=false;
+    if(returnToExtension)app.querySelector('[data-action="open-extension"]')?.focus({preventScroll:true});
+  }
   function showDialog(title,html) {
+    extensionDialogOpen=false;
     dialog.innerHTML='<div class="dialog-head"><h2 id="dialog-title">'+esc(title)+'</h2><button class="btn quiet" data-action="close-dialog" aria-label="ダイアログを閉じる">閉じる ×</button></div><div class="dialog-body">'+html+'</div>';
     localize(dialog);
     if(!dialog.open)dialog.showModal();
     dialog.scrollTop=0;
+  }
+  function showExtension(keepPosition=false) {
+    const task=currentTask(),state=currentState();
+    if(!window.THCourse.extensionReady(task,state))return;
+    const focusId=keepPosition?document.activeElement?.id:null,top=dialog.scrollTop;
+    showDialog(task.extension.title,window.THCourse.extensionPanel(task,state,ui.extensionGrade));
+    extensionDialogOpen=true;
+    if(keepPosition){dialog.scrollTop=top;document.getElementById(focusId)?.focus({preventScroll:true});}
   }
   function download(filename,content,type) {
     const url=URL.createObjectURL(new Blob([content],{type:type || 'text/plain;charset=utf-8'}));
@@ -240,7 +256,7 @@
     if(task.hypothesisPrompt)answerRows.unshift('<h3>自分の仮説と模範例</h3><p class="preserve-lines" data-i18n-raw="'+Boolean(currentState().draft.ownHypothesis)+'">'+esc(currentState().draft.ownHypothesis || '（未記入）')+'</p><p>'+esc(task.modelHypothesis)+'</p>');
     const evidence=(r.evidenceGroups || []).map(group=>'<li><b>'+esc(group.label)+'</b>：'+esc(group.anyOf.join(' または '))+'（'+esc(ROLES[group.role])+'）</li>').join('');
     const extras=(r.evidenceExtras || []).map(item=>'<li><b>'+esc(item.id)+'</b>（'+esc(item.roles.map(role=>ROLES[role]).join(' / '))+'）：'+esc(item.reason)+'</li>').join('');
-    showDialog('解説・報告例','<p>'+esc(x.summary)+'</p><ol>'+(x.reasoning || []).map(line=>'<li>'+esc(line)+'</li>').join('')+'</ol><div class="answer-box">'+answerRows.join('')+'</div>'+(evidence ? '<h3>必要な根拠の例</h3><ul>'+evidence+'</ul>' : '')+(extras ? '<details><summary>補足証拠として使える記録と役割</summary><ul>'+extras+'</ul></details>' : '')+'<h3>報告の例</h3><pre data-i18n-example>'+esc(x.sampleReport || '')+'</pre><p><b>次に考えること：</b>'+esc(x.next)+'</p><p class="small muted">解説を確認しても進捗は完了になりません。自分の回答と証拠をそろえ、「証拠と回答を確認する」を実行してください。自由文の意味は自動採点しません。</p>');
+    showDialog('解説・報告例','<p>'+esc(x.summary)+'</p><ol>'+(x.reasoning || []).map(line=>'<li>'+esc(line)+'</li>').join('')+'</ol><div class="answer-box">'+answerRows.join('')+'</div>'+(evidence ? '<h3>必要な根拠の例</h3><ul>'+evidence+'</ul>' : '')+(extras ? '<details><summary>補足証拠として使える記録と役割</summary><ul>'+extras+'</ul></details>' : '')+'<h3>報告の例</h3><pre data-i18n-example>'+esc(x.sampleReport || '')+'</pre><p><b>次に考えること：</b>'+esc(x.next)+'</p><p class="small muted">解説を確認しても進捗は完了になりません。自分の回答と証拠をそろえ、「証拠と回答を確認する」を実行してください。自由文の意味は自動採点しません。</p>'+window.THCourse.practiceNotes(task)+window.THCourse.extensionLink(task,currentState()));
   }
   function showLog(id) {
     const task=currentTask(),state=currentState();if(!task)return;
@@ -373,8 +389,10 @@
         if(!result.errors.length&&!isExit&&d.query?.trim())operation('search');
         persist();render();break;
       }
+      case 'open-extension':showExtension();break;
+      case 'grade-extension':if(window.THCourse.extensionReady(task,state)){ui.extensionGrade=E.gradeExtension(task,state.extensionAnswers);state.extensionCompleted=ui.extensionGrade.passed;persist();render();showExtension();dialog.querySelector('.extension-feedback')?.focus({preventScroll:true});}break;
       case 'grade-exit':if(task?.exit&&state.completed){ui.exitGrade=E.gradeExit(task,state.exitDraft);state.exitCompleted=ui.exitGrade.passed;ui.exitQueryResult=ui.exitGrade.query||null;persist();render();notify(state.exitCompleted?'調査から成果物まで完了しました。':'成果物の未達成項目を確認してください。');}break;
-      case 'exit-solution':if(task?.exit){const x=task.exit,ex=x.explanation||{};showDialog('成果物の解説','<h3>'+esc(x.title)+'</h3><p>'+esc(typeof ex==='string'?ex:ex.summary||'')+'</p>'+(ex.sampleQuery?'<pre>'+esc(ex.sampleQuery)+'</pre>':'')+'<p class="preserve-lines">'+esc(x.modelReflection||ex.sampleReport||'')+'</p><p>'+esc(ex.next||'')+'</p>');}break;
+      case 'exit-solution':if(task?.exit){const x=task.exit,ex=x.explanation||{};showDialog('成果物の解説','<h3>'+esc(x.title)+'</h3><p>'+esc(typeof ex==='string'?ex:ex.summary||'')+'</p>'+(ex.sampleQuery?'<pre>'+esc(ex.sampleQuery)+'</pre>':'')+'<p class="preserve-lines">'+esc(x.modelReflection||ex.sampleReport||'')+'</p><p>'+esc(ex.next||'')+'</p>'+window.THCourse.practiceNotes(x)+window.THCourse.extensionLink(task,state));}break;
       case 'grade':if(task){ui.grade=E.gradeTask(task,state.draft,state.operations);state.completed=ui.grade.passed;if(state.completed)tutorialAction('graded');state.exitCompleted=state.completed&&Boolean(task.exit)&&E.gradeExit(task,state.exitDraft).passed;ui.queryResult=ui.grade.query||null;persist();render();notify(ui.grade.passed ? task.rubric.openHunt?'提出構成と自己比較を確認しました。内容の正しさは自動判定していません。':'タスクを完了しました。解説で考え方を振り返れます。' : '未達成の観点を確認し、調査と回答を見直してください。');app.querySelector('.feedback')?.scrollIntoView({block:'nearest',behavior:'smooth'});}break;
       case 'restart':if(task)showDialog('このタスクをやり直す','<p>「'+esc(task.title)+'」の回答・証拠・操作履歴・ヒント履歴を初期状態に戻します。他のタスクの進捗は残ります。</p><div class="row"><button class="btn primary" data-action="confirm-restart">このタスクを初期化する</button><button class="btn" data-action="close-dialog">戻る</button></div>');break;
       case 'confirm-restart':if(task){saved.taskStates[task.id]=blankState(task);closeDialog();startTask(task.id);notify('このタスクを最初から始めます。');}break;
@@ -435,6 +453,12 @@
     if(element.id==='compare-field'){ui.compareField=element.value;ui.compareRan=false;render();return;}
     if(element.id==='compare-source'){ui.compareSource=element.value;ui.compareRan=false;render();return;}
     if(!state)return;
+    if(element.matches('[data-extension-answer]')){
+      const task=currentTask(),question=task.extension?.questions.find(q=>q.id===element.dataset.extensionAnswer);
+      if(!window.THCourse.extensionReady(task,state)||!question||!question.options.some(o=>o.id===element.value)||!element.checked)return;
+      state.extensionAnswers={...state.extensionAnswers,[question.id]:element.value};state.extensionCompleted=false;ui.extensionGrade=null;
+      persist();render();showExtension(true);return;
+    }
     if(element.matches('[data-exit]')){updateExit(element);return;}
     if(element.matches('[data-draft]')){updateDraft(element);return;}
     if(element.matches('[data-array]')){
@@ -461,7 +485,7 @@
     }catch(error){showDialog('進捗を読み込めませんでした','<p>'+esc(error instanceof SyntaxError ? 'JSONの形式が正しくありません。ThreatHunting-roomから保存した進捗ファイルを選んでください。' : error.message)+'</p><p>現在の進捗は変更していません。</p>');}
     finally{importInput.value='';}
   });
-  dialog.addEventListener('cancel',()=>{pendingImport=null;});
+  dialog.addEventListener('cancel',event=>{pendingImport=null;if(extensionDialogOpen){event.preventDefault();closeDialog();}});
   document.addEventListener('keydown',event=>{
     if(event.key==='/' && !dialog.open && !event.ctrlKey && !event.metaKey && !['INPUT','TEXTAREA','SELECT'].includes(document.activeElement.tagName)){
       const query=document.getElementById('query');if(query){event.preventDefault();query.focus();}
