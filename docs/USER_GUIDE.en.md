@@ -85,3 +85,9 @@ Reports, plans, and CSV files are not backups from which progress can be restore
 The synthetic logs are selected learning samples. They do not represent every event or the incidence of activity in a real environment. The Linux chapter also analyzes logs through the interface; it does not execute operating-system commands, a terminal, pipelines, or network operations.
 
 You do not need to paste real organizational logs or secrets into the application. When reporting a problem, use the task name, steps, browser name, and a reproduction based on the supplied synthetic data.
+
+## Optional guidance added in this release
+
+A01's optional inventory guide opens the asset roster and collection records. “View collection records” clears exploratory filters and shows collection records from both periods. The time check compares UTC/JST for the same record ID and the UTC interval of a JST business date.
+
+Open X01 after completing G02 or from the learning map. Submit a query retrieving all selected evidence, compare your hypothesis and reflection, and record your acknowledgment. Editing the text requires another comparison. Completion of structural checks does not establish that prose, conclusions or evidence roles are correct. Save the report and return to the learning map to continue reviewing the main course.

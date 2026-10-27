@@ -233,6 +233,17 @@
     return result;
   }
 
+  // Open hunts have no fixed true-positive set. Check reproducibility only;
+  // never present precision/recall or certify the learner's reasoning.
+  function checkOpenQuery(task, draft) {
+    const query=asText(draft.query), errors=[...parseQuery(query).errors];
+    if(!query.trim()) errors.push('再現する検索式を入力してください。');
+    const matched=errors.length?[]:filterLogs(task.logs,{period:'all',query}).map(log=>log.id);
+    const selected=isArray(draft.evidence)?draft.evidence:[], found=new Set(matched);
+    const missing=selected.filter(e=>!e||!found.has(e.id)).map(e=>e&&e.id);
+    return {openHunt:true,errors,matched,missing,passed:!errors.length&&selected.length>0&&missing.length===0&&matched.length>0&&matched.length<task.logs.length};
+  }
+
   function gradeTask(task, draft, operations) {
     const rubric = task && task.rubric || {};
     draft = draft && typeof draft === 'object' ? draft : {};
@@ -245,6 +256,16 @@
     const ops = new Set(isArray(operations) ? operations : []);
     let queryResult;
 
+    if (rubric.openHunt) {
+      const rows=selected.map(e=>(task.logs||[]).find(log=>log.id===e?.id)).filter(Boolean);
+      const availableHosts=new Set((task.assets||[]).map(a=>a.host)),availableSources=new Set((task.sources||[]).map(s=>s.name));
+      add('open-targets','自分で選んだ対象',targets.length>0&&new Set(targets).size===targets.length&&targets.every(host=>availableHosts.has(host)),'対象を記録しました。','台帳にある対象を一つ以上選んでください。');
+      add('open-sources','使用したログと証拠の対応',sources.length>=2&&new Set(sources).size===sources.length&&sources.every(source=>availableSources.has(source)&&rows.some(row=>row.source===source))&&rows.every(row=>sources.includes(row.source)),'選んだ種類と証拠の種類が対応しています。','証拠に使ったログ種類を2種類以上選び、証拠と対応させてください。');
+      add('open-evidence','両期間の証拠と検討メモ',selected.length>=4&&selected.length<=8&&rows.length===selected.length&&new Set(selected.map(e=>e.id)).size===selected.length&&selected.every(e=>ROLES.has(e.role)&&typeof e.note==='string'&&e.note.trim())&&['baseline','current'].every(period=>rows.some(row=>row.period===period))&&['context','counter','gap'].every(role=>selected.some(e=>e.role===role)),'両期間・背景・反証・観測不足と各メモがそろっています。役割の意味は自己比較で確かめてください。','4〜8件の証拠にメモを付け、比較用と今回の両期間、背景・反証・観測不足の役割を含めてください。');
+      add('open-report','結論・限界・次の行動の記入',VERDICTS.has(draft.verdict)&&['summary','limitations','nextAction'].every(key=>typeof draft[key]==='string'&&draft[key].trim()),'報告の各欄に記入があります。内容の妥当性は自動判定しません。','結論を選び、調査メモ・限界・次の行動を記入してください。');
+      queryResult=checkOpenQuery(task,draft);
+      add('open-query','選んだ証拠を再取得する検索',queryResult.passed,'提出式で選んだ証拠を再取得できました。検索の適切さは自己比較で確認します。','両期間の全記録に適用して証拠を再取得できる、空欄でも全件抽出でもない検索式を記入してください。');
+    }
     if (own(rubric, 'hypotheses')) add('hypothesis', '調べる仮説', isArray(rubric.hypotheses) && rubric.hypotheses.includes(draft.hypothesis), '調査の目的に合う仮説を選べています。', '依頼内容と、記録から検証できることを読み直して仮説を選んでください。');
     if (own(rubric, 'targets')) {
       const expected = new Set(rubric.targets || []), actual = new Set(targets);
@@ -283,7 +304,7 @@
       criteria[criteria.length - 1].result = queryResult;
     }
 
-    if ((rubric.evidenceGroups || []).length || selected.length) {
+    if (!rubric.openHunt && ((rubric.evidenceGroups || []).length || selected.length)) {
       const valid = selected.length <= 8 && unique(selected.map(e => e && e.id)).length === selected.length && selected.every(e => e && logs.has(e.id) && ROLES.has(e.role));
       add('evidence-valid', '証拠の登録', valid, '教材に存在する証拠を、重複なく8件以内に整理しています。', '証拠はこの課題の記録から重複なく8件以内に選び、役割を設定してください。');
       (rubric.evidenceGroups || []).forEach((group, index) => {
@@ -475,5 +496,5 @@
     return normalized;
   }
 
-  return Object.freeze({parseQuery, filterLogs, aggregateLogs, compareLogs, gradeQuery, gradeTask, gradeExit, validateProgress});
+  return Object.freeze({parseQuery, filterLogs, aggregateLogs, compareLogs, gradeQuery, checkOpenQuery, gradeTask, gradeExit, validateProgress});
 });

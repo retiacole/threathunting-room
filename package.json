@@ -12,5 +12,5 @@
     "test": "node scripts/test.cjs",
     "check:release": "node scripts/check-release.cjs"
   },
-  "version": "0.6.0"
+  "version": "0.7.0"
 }

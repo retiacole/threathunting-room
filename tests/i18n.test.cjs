@@ -59,7 +59,7 @@ test('every authored Japanese learner-facing field in the public bundle has an e
  const {tasks,environments}=require('../src/catalog.cjs');
  const {createPublicBundle}=require('../src/public-data.cjs');
  const bundle=createPublicBundle({tasks,environments});
- const dictionary=Object.assign({},...['ui','part1','part2'].map(name=>JSON.parse(fs.readFileSync(path.join(__dirname,'../src/i18n-'+name+'.en.json'),'utf8'))));
+ const dictionary=Object.assign({},require('../src/content-capstone.cjs').translations,...['ui','part1','part2'].map(name=>JSON.parse(fs.readFileSync(path.join(__dirname,'../src/i18n-'+name+'.en.json'),'utf8'))));
  const missing=[];let checked=0;
  function visit(value,location=[]){
    const key=location.join('.');

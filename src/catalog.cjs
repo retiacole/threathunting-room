@@ -19,6 +19,6 @@ const program=[...foundation,...operational.tasks].map(t=>{
  if(!Array.isArray(t.logIds)||new Set(t.logIds).size!==t.logIds.length)throw new Error('Invalid log references '+t.id);
  return {...t,part:2,rubric:shiftValidation(t.rubric),assets:shared.assets,periods:t.periods||shared.periods,logs:t.logIds.map(id=>{if(!logMap.has(id))throw new Error('Missing '+id+' for '+t.id);return logMap.get(id);})};
 });
-const tasks=[tutorial,...original,...program];
-if(tasks.length!==39||new Set(tasks.map(t=>t.id)).size!==39)throw new Error('38 tasks plus tutorial required');
+const tasks=[tutorial,...original,...program,require('./content-capstone.cjs').task];
+if(tasks.length!==40||new Set(tasks.map(t=>t.id)).size!==40)throw new Error('38 main tasks plus tutorial and optional capstone required');
 module.exports={tasks,environments:{[shared.id]:shared}};

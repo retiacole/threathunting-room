@@ -26,7 +26,8 @@ test('distribution builds as one self-contained HTML with parseable inline data 
     assert.equal(dictionary['保存'],'Save');
     assert.ok(Object.keys(dictionary).length>1000);
     assert.match(html,/data-language/);
-    assert.equal(bundle.tasks.length,39);
+    assert.equal(bundle.tasks.length,40);
+    assert.equal(bundle.releaseVersion,require('../package.json').version);
     assert.equal(bundle.tasks.filter(t=>t.part===2).length,23);
     assert.ok(bundle.tasks.filter(t=>t.part===2).every(t=>!t.logs&&t.logIds.length));
     assert.equal(Object.values(bundle.environments)[0].assets.length,20);

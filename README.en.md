@@ -2,7 +2,7 @@
   <img src="docs/images/threathunting-room-banner.png" width="960" alt="The ThreatHunting-room ranger examines footprints with a lantern and magnifying glass in a moonlit forest">
 </p>
 
-# ThreatHunting-room v0.6
+# ThreatHunting-room v0.7.0
 
 [日本語](README.md) · [English](README.en.md)
 
@@ -39,7 +39,7 @@ Use the **Language** menu in the header to switch between Japanese and English, 
 
 ## What you will practice
 
-The course includes **38 main lessons, one interface tutorial, and nine follow-up deliverable steps**. Part 2 uses a shared environment with 15 endpoints and five servers.
+The course includes **38 main lessons, one interface tutorial, one optional capstone, and nine follow-up deliverable steps**. Part 2 uses a shared environment with 15 endpoints and five servers.
 
 - **Connect hypotheses to data:** decide what to investigate and which logs can answer the question.
 - **Compare against normal activity:** explore counts, unusual activity, process relationships, and timelines.
@@ -88,3 +88,11 @@ Open an issue with the lesson name, reproduction steps, expected result, actual 
 <p align="center">
   <img src="docs/images/threathunting-room-ending.png" width="100%" alt="The six room-series companions, including the green-hooded ranger, walk toward a distant castle">
 </p>
+
+## v0.7.0: entry support and an optional independent hunt
+
+A01 now has optional guidance from the asset roster to collection records and then relevant telemetry, plus a quick UTC/JST check for the same event and a Japanese business date. Its 1,470 records and existing checklist are unchanged.
+
+After G02, **one optional capstone X01 is tracked separately from the 38 main lessons**. Choose a starting point from a new three-asset dataset and develop a hypothesis, comparison, counterevidence, limits and next actions. Submit 4–8 annotated records and a query that retrieves them across both periods. Completion checks submission structure, reproducibility and self-comparison with review examples. It does not certify the meaning of prose or evidence roles. Continue freely from the learning map; existing progress JSON remains supported.
+
+The top header displays the version from package.json, shared by online/offline builds and both languages.

@@ -5,7 +5,7 @@ const {tasks,environments}=require('../src/catalog.cjs');const E=require('../src
 
 test('all 38 main tasks and 9 exits are reachable through real controller actions',()=>{
  const h=boot({tasks});assert.equal(h.rendered.ui.task,'tutorial');
- for(const t of tasks.filter(t=>t.id!=='tutorial')){
+ for(const t of tasks.filter(t=>t.id!=='tutorial'&&!t.optional)){
   complete(h,t);assert.equal(h.state.taskStates[t.id].completed,true,t.id+': '+JSON.stringify(h.rendered.ui.grade));
   if(t.exit){assert.equal(h.state.taskStates[t.id].exitCompleted,false);completeExit(h,t);assert.equal(h.state.taskStates[t.id].exitCompleted,true,t.id+': '+JSON.stringify(h.rendered.ui.exitGrade));}
  }

@@ -342,6 +342,7 @@ test('39 full-length learning notes fit the expanded progress budget and oversiz
 });
 
 function authoredAnswer(item) {
+  if(item.rubric.openHunt)return require('./support/capstone.cjs').answer(item);
   const rubric=item.rubric || {}, evidence=[];
   for(const group of rubric.evidenceGroups || []) {
     if(!evidence.some(e=>e.id===group.anyOf[0])) evidence.push({id:group.anyOf[0],role:group.role,note:''});
@@ -358,7 +359,7 @@ function authoredAnswer(item) {
 
 test('catalog has 38 main tasks plus tutorial, shared immutable IDs and asset-aware target inventories', () => {
   const {tasks,environments}=require('../src/catalog.cjs');
-  assert.equal(tasks.length,39);assert.equal(tasks.filter(t=>t.part===1).length,15);assert.equal(tasks.filter(t=>t.part===2).length,23);
+  assert.equal(tasks.length,40);assert.equal(tasks.filter(t=>t.optional).length,1);assert.equal(tasks.filter(t=>t.part===1).length,15);assert.equal(tasks.filter(t=>t.part===2).length,23);
   const shared=environments.aonagi;
   assert.equal(shared.assets.length,20);assert.equal(new Set(shared.assets.map(a=>a.id)).size,20);assert.equal(new Set(shared.assets.map(a=>a.host)).size,20);
   assert.equal(shared.assets.filter(a=>a.category==='workstation').length,15);
@@ -533,7 +534,7 @@ test('genuine v0.4 progress keeps rec-ID evidence and notes while migrating enti
   assert.equal(Object.keys(imported.taskStates).length,39);
   const required=publicTasks.filter(task=>task.rubric.alternative);
   assert.equal(required.length,6);
-  for(const task of publicTasks) {
+  for(const task of publicTasks.filter(t=>!t.optional)) {
     const before=previous.taskStates[task.id],after=imported.taskStates[task.id];
     assert.ok(before.completed,task.id+' fixture is an actual previous completion');
     assert.equal(after.draft.summary,before.draft.summary,task.id+' original notes');
@@ -574,7 +575,7 @@ test('genuine v0.5 progress keeps manual UTC date meaning and learner text when 
   const {publicTasks}=publishedCatalog();
   const restored=E.validateProgress(previous,publicTasks);
   assert.equal(restored.migrated,true);assert.equal(Object.keys(restored.taskStates).length,39);
-  for(const task of publicTasks) {
+  for(const task of publicTasks.filter(t=>!t.optional)) {
     const before=previous.taskStates[task.id],after=restored.taskStates[task.id];
     assert.equal(before.completed,true,task.id+' actual v0.5 completion');
     assert.deepEqual(after.draft.evidence,before.draft.evidence,task.id+' record identities and notes survive');

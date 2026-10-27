@@ -52,3 +52,9 @@ This tool moves from reading logs and traffic toward asking and investigating yo
 | [SOCroom](https://github.com/retiacole/socroom) | Investigation, judgment, and reporting using multiple sources of information |
 
 ThreatHunting-room itself does not execute commands. It also does not directly import progress or investigation results from the other room applications. Apply the operations and reasoning you learned to a new investigation instead.
+
+## After G02: optional capstone X01
+
+The recommended main route and 38-lesson total are unchanged. X01 is a separate optional lesson: choose a starting point in a new three-asset dataset, then independently form a hypothesis, compare, search, consider counterevidence, describe limits and propose next actions. No fixed investigative sequence or correct hypothesis is prescribed. Review criteria and multiple examples are available on request.
+
+Submit 4–8 annotated records covering both periods, at least two sources, and context/counterevidence/gap roles; a reproducible query; targets, period, conclusion, limits and next actions; and self-comparison of the current hypothesis and reflection. Automated checks cover structure and reproducibility, not meaning or conclusion correctness. Continuing or reviewing the main course remains available.

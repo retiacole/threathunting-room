@@ -16,11 +16,12 @@
   const freshUI = () => ({task:null,level:'intro',part:1,chapter:'I',aggregateSort:'count-desc',queryResult:null,exitQueryResult:null,exitGrade:null,tab:'logs',reportTab:'evidence',filters:emptyFilters(),page:0,group:'host',aggregateRan:false,compareRan:false,compareSource:'',compareField:'host',grade:null,guideVisible:true});
   const PIVOT_FIELDS = ['host','user','source','sensor','process','destination','parent','session','pid','process_guid','parent_process_guid','request_id','device_id','hash','parent_process'];
   const queryValue = value => '"'+String(value).replace(/\\/g,'\\\\').replace(/"/g,'\\"')+'"';
-  let tasks, environments={}, saved = {schemaVersion:3,taskStates:{},lastTask:null,activeTask:null,timeDisplay:'utc'};
+  let tasks, releaseVersion='', environments={}, saved = {schemaVersion:3,taskStates:{},lastTask:null,activeTask:null,timeDisplay:'utc'};
   let ui = freshUI(), storageWarning = '', pendingImport = null, toastTimer;
   try {
     const data = JSON.parse(document.getElementById('task-data').textContent);
     tasks = Array.isArray(data) ? data : data.tasks;
+    releaseVersion=Array.isArray(data)?'':data.releaseVersion||'';
     environments=Array.isArray(data)?{}:(data.environments||{});
     const maps=new Map(Object.entries(environments).map(([id,env])=>[id,new Map(env.logs.map(l=>[l.id,l]))]));
     tasks=tasks.map(task=>{
@@ -111,7 +112,7 @@
   function render(keepFocus) {
     const focus=keepFocus ? focusSignature(document.activeElement) : null;
     ui.timeDisplay=saved.timeDisplay||'utc';
-    app.innerHTML=window.THView.render({tasks,environments,saved,ui,storageWarning});
+    app.innerHTML=window.THView.render({tasks,environments,saved,ui,storageWarning,releaseVersion});
     localize(document.body);
     highlightTutorial(false);
     document.title=(currentTask() ? (I?I.text(currentTask().title):currentTask().title)+' — ' : '')+'ThreatHunting-room';
@@ -207,6 +208,7 @@
     showDialog('検索式の使い方','<p>空白はAND、大文字の <code>OR</code> はいずれかの条件です。ANDを先に評価します。文字の大小は区別しません。<code>host</code> / <code>user</code> / <code>source</code> / <code>sensor</code> / <code>process</code> / <code>destination</code> / <code>parent</code> と、識別子 <code>session</code> / <code>pid</code> / <code>process_guid</code> / <code>parent_process_guid</code> / <code>request_id</code> / <code>device_id</code> / <code>hash</code> が使えます。日付は <code>after:2026-09-14 before:2026-09-16</code> のように指定でき、両端の日を含むUTC日付で評価します。</p><pre>parent:docview.exe source:端末\nsensor:edge-flow destination:relay-room.example\nhost:WS-42 session:0x248\nprocess_guid:{7a96381a-9311-42cb-950d-cc885da9e7f1} OR parent_process_guid:{7a96381a-9311-42cb-950d-cc885da9e7f1}\nsource:通信 destination:alpha.example OR source:通信 destination:beta.example\nprocess:powershell.exe -source:業務</pre><p>識別子・ハッシュ・sensorは完全一致、それ以外は部分一致です。<code>-語句</code> で除外、<code>&quot;複数の語句&quot;</code> でまとまりを指定します。<code>&quot;OR&quot;</code> は文字列として検索します。括弧によるグループ化には対応しません。</p><p>画面のログ種類・端末・期間・日付と、提出欄の固定評価範囲は、ORの両方の条件に適用します。検索式に書く日付条件は、そのORグループだけに適用します。固定範囲より狭い日を選ぶ場合は両方のグループへ書きます。</p><pre>after:2026-09-15 before:2026-09-15 source:通信 destination:alpha.example OR after:2026-09-15 before:2026-09-15 source:通信 destination:beta.example</pre><p>この式は9月15日UTCの2つの宛先を調べます。JSTでは9月15日09:00から9月16日09:00未満です。JST併記をオンにしても検索式の日付条件はUTCのままです。画面の日付欄はラベルの時間帯で評価します。第2部はJSTが既定で、UTCへ切り替えることもできます。例えば9月15日JSTは9月14日15:00 UTCから9月15日15:00 UTC未満です。提出式は表示された固定評価範囲で採点されます。</p><p>記録上のPID・セッションをクリックすると同じ端末に絞り、GUIDをクリックするとそのプロセスと子プロセスを探します。PID・セッションは時刻を照合し、同一番号だけで関連付けないでください。</p><div class="notice">この検索式は教材用の簡易構文です。KQL・SPLなど実製品の検索言語を完全には再現していません。</div>');
   }
   function showRoles() {
+    if(currentTask()?.rubric.openHunt){showDialog('証拠の役割','<p>支持は自分の仮説を裏付ける事実、反証は仮説と異なる説明、背景は比較や条件、観測不足は記録の限界を示します。</p><p>同じ記録でも仮説によって役割が変わります。この自主ハントでは、役割がそろっていることとメモの記入だけを確認します。関連性・役割・文章の意味は自動判定しません。自分の仮説と解説の観点を使って確かめてください。</p>');return;}
     showDialog('証拠の役割','<ul><li><b>仮説を支持：</b>調べている事実や、想定している活動の仮説を裏付ける記録。</li><li><b>反証・別の説明：</b>正常な業務など、別の説明を支える記録。</li><li><b>背景・比較：</b>通常時の状態、資産の役割、調査範囲を理解するための記録。</li><li><b>観測不足：</b>収集停止や対象外など、分からない理由を示す記録。</li></ul><p>同じ記録でも、どの仮説を検証しているかで役割が変わります。この教材では各課題の仮説に対する役割を確認します。</p><p>必須の根拠に加え、課題で関連付けられる補足証拠も受け付けます。無関係な記録や役割違いは、対象の記録IDを採点結果に表示します。</p><p>証拠メモは自分の振り返り用です。文章の意味は自動採点されません。</p>');
   }
   function showHint(advance) {
@@ -310,6 +312,7 @@
         if(pendingQuery!==undefined&&document.getElementById('query'))document.getElementById('query').value=pendingQuery;
         break;
       }
+      case 'inventory-sources':if(task?.id==='a01'){ui.filters={...emptyFilters(task),source:'収集',period:'all'};ui.tab='logs';filterChanged();}break;
       case 'source':if(task && task.sources.some(s=>s.name===button.dataset.source)){ui.filters.source=button.dataset.source;ui.tab='logs';filterChanged();}break;
       case 'toggle-time':{
         const inputs=[['#query',document.getElementById('query')],['[data-filter-date="from"]',app.querySelector('[data-filter-date="from"]')],['[data-filter-date="to"]',app.querySelector('[data-filter-date="to"]')]];
@@ -364,15 +367,15 @@
       }
       case 'test-query':case 'test-exit-query':{
         if(!task)return;const isExit=action==='test-exit-query',spec=isExit?task.exit?.rubric.query:task.rubric.query;
-        if(!spec)return;const d=isExit?state.exitDraft:state.draft;
-        const result=E.gradeQuery(isExit&&task.exit.logs?task.exit.logs:task.logs,d.query||'',spec);
+        if(!spec&&!(task.rubric.openHunt&&!isExit))return;const d=isExit?state.exitDraft:state.draft;
+        const result=task.rubric.openHunt&&!isExit?E.checkOpenQuery(task,d):E.gradeQuery(isExit&&task.exit.logs?task.exit.logs:task.logs,d.query||'',spec);
         if(isExit)ui.exitQueryResult=result;else ui.queryResult=result;
         if(!result.errors.length&&!isExit&&d.query?.trim())operation('search');
         persist();render();break;
       }
       case 'grade-exit':if(task?.exit&&state.completed){ui.exitGrade=E.gradeExit(task,state.exitDraft);state.exitCompleted=ui.exitGrade.passed;ui.exitQueryResult=ui.exitGrade.query||null;persist();render();notify(state.exitCompleted?'調査から成果物まで完了しました。':'成果物の未達成項目を確認してください。');}break;
       case 'exit-solution':if(task?.exit){const x=task.exit,ex=x.explanation||{};showDialog('成果物の解説','<h3>'+esc(x.title)+'</h3><p>'+esc(typeof ex==='string'?ex:ex.summary||'')+'</p>'+(ex.sampleQuery?'<pre>'+esc(ex.sampleQuery)+'</pre>':'')+'<p class="preserve-lines">'+esc(x.modelReflection||ex.sampleReport||'')+'</p><p>'+esc(ex.next||'')+'</p>');}break;
-      case 'grade':if(task){ui.grade=E.gradeTask(task,state.draft,state.operations);state.completed=ui.grade.passed;if(state.completed)tutorialAction('graded');state.exitCompleted=state.completed&&Boolean(task.exit)&&E.gradeExit(task,state.exitDraft).passed;ui.queryResult=ui.grade.query||null;persist();render();notify(ui.grade.passed ? 'タスクを完了しました。解説で考え方を振り返れます。' : '未達成の観点を確認し、調査と回答を見直してください。');app.querySelector('.feedback')?.scrollIntoView({block:'nearest',behavior:'smooth'});}break;
+      case 'grade':if(task){ui.grade=E.gradeTask(task,state.draft,state.operations);state.completed=ui.grade.passed;if(state.completed)tutorialAction('graded');state.exitCompleted=state.completed&&Boolean(task.exit)&&E.gradeExit(task,state.exitDraft).passed;ui.queryResult=ui.grade.query||null;persist();render();notify(ui.grade.passed ? task.rubric.openHunt?'提出構成と自己比較を確認しました。内容の正しさは自動判定していません。':'タスクを完了しました。解説で考え方を振り返れます。' : '未達成の観点を確認し、調査と回答を見直してください。');app.querySelector('.feedback')?.scrollIntoView({block:'nearest',behavior:'smooth'});}break;
       case 'restart':if(task)showDialog('このタスクをやり直す','<p>「'+esc(task.title)+'」の回答・証拠・操作履歴・ヒント履歴を初期状態に戻します。他のタスクの進捗は残ります。</p><div class="row"><button class="btn primary" data-action="confirm-restart">このタスクを初期化する</button><button class="btn" data-action="close-dialog">戻る</button></div>');break;
       case 'confirm-restart':if(task){saved.taskStates[task.id]=blankState(task);closeDialog();startTask(task.id);notify('このタスクを最初から始めます。');}break;
       case 'export-report':exportReport();break;
@@ -410,7 +413,7 @@
     if(element.matches('[data-draft]')){updateDraft(element);return;}
     if(element.matches('[data-evidence-note]')){
       const state=currentState(),evidence=state && state.draft.evidence.find(e=>e.id===element.dataset.evidenceNote);
-      if(evidence){evidence.note=element.value.slice(0,2000);persist();}
+      if(evidence){evidence.note=element.value.slice(0,2000);const dirty=currentTask()?.rubric.openHunt?invalidate():false;persist();if(dirty)render(true);}
     }
   });
   document.addEventListener('change',event=>{

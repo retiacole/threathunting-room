@@ -93,6 +93,6 @@ function createPublicBundle({tasks,environments}){
     if(task.environment){delete result.logs;delete result.assets;}
     return result;
   });
-  return {version:6,tasks:publicTasks,environments:convert(environments)};
+  return {version:6,releaseVersion:require('../package.json').version,tasks:publicTasks,environments:convert(environments)};
 }
 module.exports={recordId,createPublicBundle};

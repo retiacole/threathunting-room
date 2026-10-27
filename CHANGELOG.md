@@ -1,5 +1,11 @@
 # 変更履歴 / Changelog
 
+## v0.7.0 — 2026-10-28
+
+- Added optional A01 inventory and collection-filter entry guidance with a UTC/JST business-date check, preserving the original corpus and checklist.
+- Added one optional independent capstone X01 after G02, separate from 38 main lessons, using structural evidence checks, reproducible queries and honest self-review.
+- Kept existing route, progress schemas and bilingual operation; displayed the package version in the top header.
+
 ## v0.6.0 — 2026-10-27
 
 本体v0.6を基にした、GitHubでの初回公開版です。

@@ -1,4 +1,4 @@
-# ThreatHunting-room v0.6 data contract
+# ThreatHunting-room v0.7.0 data contract
 
 ## Distribution and catalog
 
@@ -110,3 +110,11 @@ JST display adds nine hours with date rollover to event cards, timelines, detail
 ## Verification boundary
 
 Engine/content tests and controller-handler tests cover 38 investigations, nine exits, alternative queries, held-out fixtures, migration, regrading, tutorial gating/resumption/isolation, exports and runtime hydration. Build tests require one self-contained HTML. Controller/view tests use Node VM and a minimal DOM; they do not validate real-browser layout, keyboard focus or native download behavior. Automated tests/builds do not start a web server. A user-authorized loopback server may be used temporarily for manual browser verification and must be stopped afterward.
+
+## v0.7 optional capstone and release identity
+
+- `x01` is `{optional:true,part:0,chapter:'X'}` with its own synthetic three-asset corpus. It does not join the main route or the 38-task total. Tutorial and all original 38 task IDs remain unchanged; there are 40 task definitions including tutorial and capstone. G02 offers X01 optionally and retains home/review controls.
+- `rubric.openHunt` uses existing draft and schema3 fields. It requires a valid chosen target, source/evidence correspondence (at least 2 sources), 4–8 unique existing evidence records with notes spanning both periods and context/counter/gap roles, report fields, scope dates, existing operation checks, and exact current self-review snapshots. It does not compare the target/verdict/evidence role to a prescribed correct investigation. The normal closed rubric is unchanged.
+- `checkOpenQuery` runs in all periods/all sources/all hosts independently of exploratory filters. A nonempty valid query must retrieve every selected record without matching the entire corpus. It returns an open-hunt result without precision/recall. No semantic grading or held-out detection claim is made. Reports name this structural status explicitly.
+- A01 retains its 1470 rows and checklist. Its optional entry aid clears exploratory filters only when the learner requests collection records; the time exercise is an ungraded revealable example.
+- `releaseVersion` comes from package.json, is embedded in public data and shown in the top header on all viewport sizes and in both languages. Bundle encoding stays version6 and progress stays schema3. Existing v1/v2/v3 imports do not acquire capstone state.

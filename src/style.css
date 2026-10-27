@@ -51,3 +51,7 @@
 .language-menu{display:flex;align-items:center;gap:6px;font-size:12px;color:var(--muted)}
 .language-menu select{width:auto;min-width:88px;padding:6px 8px;margin:0}
 @media(max-width:600px){.top-actions{flex-wrap:wrap}.language-menu{font-size:11px}.language-menu select{min-width:80px}}
+
+/* Keep release visible at the top on narrow screens as well. */
+.release-version{color:var(--mint);font:12px var(--mono);white-space:nowrap;flex-shrink:0}
+.inventory-entry{margin:12px 25px}.inventory-entry>p,.optional-capstone>p{margin:10px 0}
