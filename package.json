@@ -1,0 +1,16 @@
+{
+  "name": "threathunting-room",
+  "private": true,
+  "description": "Browser-only, offline threat-hunting practice with synthetic logs.",
+  "author": "retiacole",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "build": "node scripts/build-publication.cjs",
+    "test": "node scripts/test.cjs",
+    "check:release": "node scripts/check-release.cjs"
+  },
+  "version": "0.6.0"
+}

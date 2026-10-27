@@ -1,0 +1,14 @@
+.DS_Store
+Thumbs.db
+node_modules/
+coverage/
+*.log
+*.tmp
+.env
+.env.*
+!.env.example
+review/
+visual-check/
+progress*.json
+*-report.txt
+first-hunt-plan.txt

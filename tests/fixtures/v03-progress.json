@@ -1,0 +1,2541 @@
+{
+  "schemaVersion": 3,
+  "taskStates": {
+    "tutorial": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "DEMO-WS-02"
+        ],
+        "sources": [],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "tutorial-net1",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: tutorial-net1"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: tutorial"
+      },
+      "operations": [
+        "search"
+      ],
+      "completed": true,
+      "guideStep": 9,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": [
+        "opened-log",
+        "opened-answers",
+        "graded",
+        "viewed-solution"
+      ]
+    },
+    "i01": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "WS-14"
+        ],
+        "sources": [],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "i01-c04",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: i01-c04"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: i01"
+      },
+      "operations": [
+        "search"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "i02": {
+      "draft": {
+        "hypothesis": "schedule-match",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [],
+        "sources": [
+          "認証",
+          "業務"
+        ],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "i02-c0-job",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: i02-c0-job"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: i02"
+      },
+      "operations": [],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "i03": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "WS-23"
+        ],
+        "sources": [],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "i03-c07",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: i03-c07"
+          },
+          {
+            "id": "i03-c10",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: i03-c10"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: i03"
+      },
+      "operations": [
+        "aggregate"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "i04": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "WS-32"
+        ],
+        "sources": [],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "i04-b-WS-32-0-0",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: i04-b-WS-32-0-0"
+          },
+          {
+            "id": "i04-c-WS-32-0-0",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: i04-c-WS-32-0-0"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: i04"
+      },
+      "operations": [
+        "compare"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "i05": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "WS-42"
+        ],
+        "sources": [],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "i05-mori-auth",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: i05-mori-auth"
+          },
+          {
+            "id": "i05-mori-shell",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: i05-mori-shell"
+          },
+          {
+            "id": "i05-mori-net",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: i05-mori-net"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: i05"
+      },
+      "operations": [
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "i06": {
+      "draft": {
+        "hypothesis": "unplanned-admin",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "OPS-06"
+        ],
+        "sources": [
+          "業務",
+          "端末",
+          "通信"
+        ],
+        "verdict": "benign",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "scoped-recheck",
+        "evidence": [
+          {
+            "id": "i06-approved-plan",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: i06-approved-plan"
+          },
+          {
+            "id": "i06-early-process-0",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: i06-early-process-0"
+          },
+          {
+            "id": "i06-early-net-0",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: i06-early-net-0"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: i06"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "p01": {
+      "draft": {
+        "hypothesis": "app-polling",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FIN-WS-01"
+        ],
+        "sources": [
+          "通信",
+          "端末",
+          "業務"
+        ],
+        "verdict": "supported",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "trace-origin",
+        "evidence": [
+          {
+            "id": "p01-e02",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p01-e02"
+          },
+          {
+            "id": "p01-e06",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p01-e06"
+          },
+          {
+            "id": "p01-e01",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p01-e01"
+          },
+          {
+            "id": "p01-e07",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: p01-e07"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: p01"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "source:通信 process:sync-agent.exe destination:sync-node.example",
+        "choice": "",
+        "selections": [],
+        "reflection": "sync-agent.exe と sync-node.example の組み合わせで通信候補を抽出し、実行GUIDから起動元を確認する。その後、時系列で間隔と回数を確認し、業務変更やファイルの来歴を照合する。この条件は今回の特徴に依存するため、名称や宛先を変えた活動は見逃す。合成標本上の適合率は本番の誤検知率を表さない。",
+        "reviewedReflection": "sync-agent.exe と sync-node.example の組み合わせで通信候補を抽出し、実行GUIDから起動元を確認する。その後、時系列で間隔と回数を確認し、業務変更やファイルの来歴を照合する。この条件は今回の特徴に依存するため、名称や宛先を変えた活動は見逃す。合成標本上の適合率は本番の誤検知率を表さない。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: この事案の通信を再び探す条件にする"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "p02": {
+      "draft": {
+        "hypothesis": "migration-boundary",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "REPORT-SRV-02"
+        ],
+        "sources": [
+          "認証",
+          "業務"
+        ],
+        "verdict": "benign",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "limit-run",
+        "evidence": [
+          {
+            "id": "p02-e01",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p02-e01"
+          },
+          {
+            "id": "p02-e02",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: p02-e02"
+          },
+          {
+            "id": "p02-e03",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: p02-e03"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: p02"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "bounded-run",
+        "selections": [],
+        "reflection": "MIG-214の2026-09-15 02:00〜03:00 UTC、REPORT-SRV-02、svc-report、CERT-REPORT-2、report-batch、テスト集計RUN-214を今回の例外として記録する。実行と終了が対応する。移行期間後、対話型認証、別端末・証明書・ジョブの利用は再調査する。",
+        "reviewedReflection": "MIG-214の2026-09-15 02:00〜03:00 UTC、REPORT-SRV-02、svc-report、CERT-REPORT-2、report-batch、テスト集計RUN-214を今回の例外として記録する。実行と終了が対応する。移行期間後、対話型認証、別端末・証明書・ジョブの利用は再調査する。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 移行作業の例外条件を記録する"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "p03": {
+      "draft": {
+        "hypothesis": "host-expansion",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "IT-ADM-01"
+        ],
+        "sources": [
+          "端末",
+          "業務",
+          "収集"
+        ],
+        "verdict": "unsubstantiated",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "retain-scope",
+        "evidence": [
+          {
+            "id": "p03-e01",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: p03-e01"
+          },
+          {
+            "id": "p03-e02",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: p03-e02"
+          },
+          {
+            "id": "p03-e03",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: p03-e03"
+          },
+          {
+            "id": "p03-e04",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: p03-e04"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: p03"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "scoped-close",
+        "selections": [],
+        "reflection": "仮説はadminctl.exeが一般端末へ広がったこと。IT-ADM-01、SALES-WS-01、DESIGN-WS-01について9月7〜9日と14〜16日の教材内プロセス記録を同条件で検索した。利用は管理端末に限られ仮説は裏付けられない。全操作の正当性は未判定。一般端末の実行や異なる親子関係など新しい根拠で再開する。",
+        "reviewedReflection": "仮説はadminctl.exeが一般端末へ広がったこと。IT-ADM-01、SALES-WS-01、DESIGN-WS-01について9月7〜9日と14〜16日の教材内プロセス記録を同条件で検索した。利用は管理端末に限られ仮説は裏付けられない。全操作の正当性は未判定。一般端末の実行や異なる親子関係など新しい根拠で再開する。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 裏付けのない仮説を終了記録にする"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "p04": {
+      "draft": {
+        "hypothesis": "logon-execution",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "BACKUP-SRV-01"
+        ],
+        "sources": [
+          "端末",
+          "業務"
+        ],
+        "verdict": "supported",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "trace-registration",
+        "evidence": [
+          {
+            "id": "p04-e01",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p04-e01"
+          },
+          {
+            "id": "p04-e02",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p04-e02"
+          },
+          {
+            "id": "p04-e03",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p04-e03"
+          },
+          {
+            "id": "p04-e05",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: p04-e05"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: p04"
+      },
+      "operations": [
+        "search",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [
+          "registration",
+          "repeated-starts",
+          "open-questions"
+        ],
+        "reflection": "TASK-442はBACKUP-SRV-01にログオン起動として登録され、同じパスのuser-sync.exeが翌日を含め2回起動した。既存の日次バックアップとは定義と実行条件が異なる。登録・起動の根拠を保存し、登録元セッション、ファイル来歴、同じ条件の他端末を担当チームが確認する。操作の意図や取得元は未確定。",
+        "reviewedReflection": "TASK-442はBACKUP-SRV-01にログオン起動として登録され、同じパスのuser-sync.exeが翌日を含め2回起動した。既存の日次バックアップとは定義と実行条件が異なる。登録・起動の根拠を保存し、登録元セッション、ファイル来歴、同じ条件の他端末を担当チームが確認する。操作の意図や取得元は未確定。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 繰り返し実行の確認を担当へ渡す"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "p05": {
+      "draft": {
+        "hypothesis": "export-boundary",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "LEDGER-FS-01"
+        ],
+        "sources": [
+          "通信",
+          "ファイル",
+          "業務"
+        ],
+        "verdict": "benign",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "scope-artifact",
+        "evidence": [
+          {
+            "id": "p05-e02",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p05-e02"
+          },
+          {
+            "id": "p05-e01",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: p05-e01"
+          },
+          {
+            "id": "p05-e03",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: p05-e03"
+          },
+          {
+            "id": "p05-e04",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: p05-e04"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: p05"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "artifact-boundary",
+        "selections": [],
+        "reflection": "EX-315に一致するEXPORT-52/ART-552の送信として記録する。外部提供可のpublic-quarterly-aggregate.csv、MAN-552、svc-ledger、承認時間帯、partner-drop.example、52428800 bytesが作成・実行票・通信で対応する。同じ宛先でも別の対象物・期間・アカウントや説明できない増加は今回の例外に含めない。",
+        "reviewedReflection": "EX-315に一致するEXPORT-52/ART-552の送信として記録する。外部提供可のpublic-quarterly-aggregate.csv、MAN-552、svc-ledger、承認時間帯、partner-drop.example、52428800 bytesが作成・実行票・通信で対応する。同じ宛先でも別の対象物・期間・アカウントや説明できない増加は今回の例外に含めない。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 承認済み送信の境界を残す"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "p06": {
+      "draft": {
+        "hypothesis": "unknown-process",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FIN-WS-01"
+        ],
+        "sources": [
+          "通信",
+          "端末",
+          "収集"
+        ],
+        "verdict": "insufficient",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "seek-alternate",
+        "evidence": [
+          {
+            "id": "p06-e02",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: p06-e02"
+          },
+          {
+            "id": "p06-e03",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: p06-e03"
+          },
+          {
+            "id": "p06-e04",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: p06-e04"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: p06"
+      },
+      "operations": [
+        "search",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [
+          "gap-window",
+          "alternative-records",
+          "process-correlation"
+        ],
+        "reflection": "対象はFIN-WS-01の9月15日10:32の外向き通信。10:00〜12:00のプロセス記録は停止して再送がなく、edge-flowに実行元はない。端末側監査やアプリ記録が残るか確認し、残らなければ過去の限界として記録する。将来は実行IDと通信の対応、収集停止の検知、復旧後の取り込みを試験する。",
+        "reviewedReflection": "対象はFIN-WS-01の9月15日10:32の外向き通信。10:00〜12:00のプロセス記録は停止して再送がなく、edge-flowに実行元はない。端末側監査やアプリ記録が残るか確認し、残らなければ過去の限界として記録する。将来は実行IDと通信の対応、収集停止の検知、復旧後の取り込みを試験する。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 実行元の観測不足を改善事項にする"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "f01": {
+      "draft": {
+        "hypothesis": "document-chain",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "WS-F1-02"
+        ],
+        "sources": [
+          "端末",
+          "通信",
+          "業務"
+        ],
+        "verdict": "supported",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "expand-behavior",
+        "evidence": [
+          {
+            "id": "f01-e04",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: f01-e04"
+          },
+          {
+            "id": "f01-e05",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: f01-e05"
+          },
+          {
+            "id": "f01-e02",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: f01-e02"
+          },
+          {
+            "id": "f01-e06",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: f01-e06"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: f01"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "source:端末 parent:docview.exe process:powershell.exe",
+        "choice": "",
+        "selections": [],
+        "reflection": "docview.exeを親とするpowershell.exeの起動を候補にする。候補の実行GUIDで通信を照合し、時刻・宛先・文書やスクリプトの来歴を確認する。定例inventoryは親が異なる。この条件だけでは通信の相関や侵害を確定せず、他の文書アプリや名称変更の見逃しもある。業務標本を増やして適用範囲を検討する。",
+        "reviewedReflection": "docview.exeを親とするpowershell.exeの起動を候補にする。候補の実行GUIDで通信を照合し、時刻・宛先・文書やスクリプトの来歴を確認する。定例inventoryは親が異なる。この条件だけでは通信の相関や侵害を確定せず、他の文書アプリや名称変更の見逃しもある。業務標本を増やして適用範囲を検討する。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 行動の組み合わせを検知候補にする"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "f02": {
+      "draft": {
+        "hypothesis": "account-movement",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "WS-F2-01",
+          "WS-F2-02",
+          "WS-F2-03"
+        ],
+        "sources": [
+          "通信",
+          "認証",
+          "業務",
+          "収集"
+        ],
+        "verdict": "unsubstantiated",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "use-identifiers",
+        "evidence": [
+          {
+            "id": "f02-e01",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: f02-e01"
+          },
+          {
+            "id": "f02-e02",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: f02-e02"
+          },
+          {
+            "id": "f02-e04",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: f02-e04"
+          },
+          {
+            "id": "f02-e05",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: f02-e05"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: f02"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "identity-scope",
+        "selections": [],
+        "reflection": "192.0.2.80は共通プロキシの外向きIPである。WS-F2-01/02/03の認証と通信を端末ID・アカウント・セッションで照合すると別主体に分かれた。9月14〜16日の教材内認証では同一アカウントの移動は裏付けられない。別端末や認証を伴わない操作は範囲外。同一アカウントの複数端末利用や対応する遠隔操作など新しい根拠で再開する。",
+        "reviewedReflection": "192.0.2.80は共通プロキシの外向きIPである。WS-F2-01/02/03の認証と通信を端末ID・アカウント・セッションで照合すると別主体に分かれた。9月14〜16日の教材内認証では同一アカウントの移動は裏付けられない。別端末や認証を伴わない操作は範囲外。同一アカウントの複数端末利用や対応する遠隔操作など新しい根拠で再開する。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 主体を分けて終了条件を残す"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "f03": {
+      "draft": {
+        "hypothesis": "object-access",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "CLOUD-F3-01"
+        ],
+        "sources": [
+          "認証",
+          "通信",
+          "ファイル",
+          "収集"
+        ],
+        "verdict": "insufficient",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "alternate-audit",
+        "evidence": [
+          {
+            "id": "f03-e01",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: f03-e01"
+          },
+          {
+            "id": "f03-e02",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: f03-e02"
+          },
+          {
+            "id": "f03-e03",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: f03-e03"
+          },
+          {
+            "id": "f03-e04",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: f03-e04"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: f03"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [
+          "alternate-owner",
+          "retention-boundary",
+          "future-object"
+        ],
+        "reflection": "SF3-91の認証と応答は対応するが、対象オブジェクトと分類は不明。9月14〜15日の元監査は復元不能であり、別監査や所有者の処理記録が残るか確認する。将来はobject_id・分類・操作結果をsession/requestへ対応させ、必要期間の保持と取得を試験する。後日の別セッションや応答量から欠落した取得内容を補わない。",
+        "reviewedReflection": "SF3-91の認証と応答は対応するが、対象オブジェクトと分類は不明。9月14〜15日の元監査は復元不能であり、別監査や所有者の処理記録が残るか確認する。将来はobject_id・分類・操作結果をsession/requestへ対応させ、必要期間の保持と取得を試験する。後日の別セッションや応答量から欠落した取得内容を補わない。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "",
+        "to": "",
+        "finding": "",
+        "evidence": [],
+        "summary": "Saved v0.3 investigation note: 取得対象を確認する観測を設計する"
+      },
+      "exitCompleted": true,
+      "tutorialActions": []
+    },
+    "a01": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "managed-population",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [],
+        "sources": [
+          "業務",
+          "収集"
+        ],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "inventory-aonagi-20260914",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: inventory-aonagi-20260914"
+          },
+          {
+            "id": "collection-remote-gap",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: collection-remote-gap"
+          },
+          {
+            "id": "collection-kiosk-network",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: collection-kiosk-network"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: a01"
+      },
+      "operations": [
+        "search",
+        "aggregate"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "a02": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [
+          "win-process",
+          "linux-audit"
+        ],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [],
+        "sources": [
+          "収集",
+          "端末"
+        ],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "collection-endpoint-windows",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: collection-endpoint-windows"
+          },
+          {
+            "id": "collection-build-srv-01",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: collection-build-srv-01"
+          },
+          {
+            "id": "collection-linux-auth",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: collection-linux-auth"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: a02"
+      },
+      "operations": [
+        "search"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "a03": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "gap-window",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FIN-WS-03"
+        ],
+        "sources": [
+          "収集"
+        ],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "collection-finance-gap",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: collection-finance-gap"
+          },
+          {
+            "id": "collection-fin-ws-03",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: collection-fin-ws-03"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: a03"
+      },
+      "operations": [
+        "search",
+        "compare"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "a04": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "identity-first",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "REMOTE-WS-01"
+        ],
+        "sources": [
+          "認証",
+          "収集",
+          "業務"
+        ],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "collection-remote-gap",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: collection-remote-gap"
+          },
+          {
+            "id": "normal-auth-remote-ws-01-0915",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: normal-auth-remote-ws-01-0915"
+          },
+          {
+            "id": "inventory-aonagi-20260914",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: inventory-aonagi-20260914"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: a04"
+      },
+      "operations": [
+        "search",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "b01": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "role-baseline",
+        "selections": [],
+        "reflection": "利用者端末は朝に利用者が認証しブラウザーを起動する。管理端末のops-adminは9時の棚卸、BUILD-SRV-01のsvc-buildは2時のビルドとパッケージ取得、BACKUP-SRV-01のsvc-backupは4時の保管処理を行う。Windows端末の12時更新はSYSTEMの別ジョブである。認証のみのLinuxや未接続端末は、Windowsと同じプロセス量では比較しない。",
+        "reviewedReflection": "利用者端末は朝に利用者が認証しブラウザーを起動する。管理端末のops-adminは9時の棚卸、BUILD-SRV-01のsvc-buildは2時のビルドとパッケージ取得、BACKUP-SRV-01のsvc-backupは4時の保管処理を行う。Windows端末の12時更新はSYSTEMの別ジョブである。認証のみのLinuxや未接続端末は、Windowsと同じプロセス量では比較しない。",
+        "targets": [],
+        "sources": [
+          "端末",
+          "通信",
+          "業務",
+          "収集"
+        ],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "business-build-daily",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: business-build-daily"
+          },
+          {
+            "id": "normal-process-build-srv-01-0908",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: normal-process-build-srv-01-0908"
+          },
+          {
+            "id": "business-backup-daily",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: business-backup-daily"
+          },
+          {
+            "id": "collection-linux-auth",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: collection-linux-auth"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: b01"
+      },
+      "operations": [
+        "aggregate",
+        "compare"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "b02": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FIN-WS-02"
+        ],
+        "sources": [
+          "端末",
+          "ファイル",
+          "業務"
+        ],
+        "verdict": "benign",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "report-scope",
+        "evidence": [
+          {
+            "id": "event-win-20260915-140506",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: event-win-20260915-140506"
+          },
+          {
+            "id": "business-finance-export",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: business-finance-export"
+          },
+          {
+            "id": "event-file-20260915-140520",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: event-file-20260915-140520"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: b02"
+      },
+      "operations": [
+        "aggregate",
+        "search",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "b03": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "BUILD-SRV-01"
+        ],
+        "sources": [
+          "通信",
+          "業務",
+          "収集"
+        ],
+        "verdict": "unsubstantiated",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "build-question",
+        "evidence": [
+          {
+            "id": "event-net-20260915-020133",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: event-net-20260915-020133"
+          },
+          {
+            "id": "business-build-daily",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: business-build-daily"
+          },
+          {
+            "id": "collection-build-srv-01",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: collection-build-srv-01"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: b03"
+      },
+      "operations": [
+        "compare",
+        "aggregate",
+        "search",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "c01": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "9月14〜16日のWindows資産で、文書アプリを親とするスクリプト起動と、その同じ実行に続く新しい外部通信があるか調べる。親子GUIDと接続GUIDで照合し、署名済みの帳票処理など業務上の別の実行を区別する。",
+        "reviewedHypothesis": "9月14〜16日のWindows資産で、文書アプリを親とするスクリプト起動と、その同じ実行に続く新しい外部通信があるか調べる。親子GUIDと接続GUIDで照合し、署名済みの帳票処理など業務上の別の実行を区別する。",
+        "query": "source:端末 parent:docview.exe process:powershell.exe OR source:通信 destination:session-api.example",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "SALES-WS-03"
+        ],
+        "sources": [
+          "端末",
+          "通信",
+          "業務"
+        ],
+        "verdict": "supported",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "same-execution",
+        "evidence": [
+          {
+            "id": "event-win-20260915-112005",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: event-win-20260915-112005"
+          },
+          {
+            "id": "event-net-20260915-112009",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: event-net-20260915-112009"
+          },
+          {
+            "id": "business-finance-export",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: business-finance-export"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: c01"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "c02": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "T1021.001を起点に、9月14〜16日のops-adminによるRDPが許可された端末・時間・作業範囲を超えたアクセスに使われていないかを調べる。ログオン種別・接続元・セッションと事前承認・作業記録を照合し、予定保守で説明できる範囲は区別する。",
+        "reviewedHypothesis": "T1021.001を起点に、9月14〜16日のops-adminによるRDPが許可された端末・時間・作業範囲を超えたアクセスに使われていないかを調べる。ログオン種別・接続元・セッションと事前承認・作業記録を照合し、予定保守で説明できる範囲は区別する。",
+        "query": "source:認証 user:ops-admin \"logon_type=10\" after:2026-09-14 before:2026-09-16",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FILE-SRV-01"
+        ],
+        "sources": [
+          "認証",
+          "業務"
+        ],
+        "verdict": "benign",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "bounded-maintenance",
+        "evidence": [
+          {
+            "id": "event-auth-20260915-193011",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: event-auth-20260915-193011"
+          },
+          {
+            "id": "business-helpdesk-maint",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: business-helpdesk-maint"
+          },
+          {
+            "id": "event-business-20260915-194500",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: event-business-20260915-194500"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: c02"
+      },
+      "operations": [
+        "search",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "c03": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "9月14〜16日に既知ハッシュの内容が実行されたかを調べる。ハッシュ一致を広く抽出し、隔離ストアの原内容ハッシュとプロセス開始時の実行ファイルハッシュを区別する。保持標本しか見つからなければ、観測した範囲で実行の裏付けなしとし、対象外の期間まで否定しない。",
+        "reviewedHypothesis": "9月14〜16日に既知ハッシュの内容が実行されたかを調べる。ハッシュ一致を広く抽出し、隔離ストアの原内容ハッシュとプロセス開始時の実行ファイルハッシュを区別する。保持標本しか見つからなければ、観測した範囲で実行の裏付けなしとし、対象外の期間まで否定しない。",
+        "query": "hash:c1dc8f2023a7b5268488f284da97e58a751727ecc3565e253650eac7bdaf629e",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FILE-SRV-01",
+          "DESIGN-WS-01"
+        ],
+        "sources": [
+          "ファイル",
+          "端末",
+          "収集",
+          "業務"
+        ],
+        "verdict": "unsubstantiated",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "retained-objects",
+        "evidence": [
+          {
+            "id": "event-file-20260915-071211",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: event-file-20260915-071211"
+          },
+          {
+            "id": "event-file-20260915-071217",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: event-file-20260915-071217"
+          },
+          {
+            "id": "collection-quarantine-hash",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: collection-quarantine-hash"
+          },
+          {
+            "id": "business-quarantine-retention",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: business-quarantine-retention"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: c03"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "c04": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "財務・設計を支えるFILE-SRV-01を優先し、9月14〜16日の共有セッションで承認外オブジェクトが取得されたか調べる。セッションと要求IDで認証・応答・対象物の監査・承認を結び、対象物を確認できなければ資産の重要性から被害を推定せず不足として残す。",
+        "reviewedHypothesis": "財務・設計を支えるFILE-SRV-01を優先し、9月14〜16日の共有セッションで承認外オブジェクトが取得されたか調べる。セッションと要求IDで認証・応答・対象物の監査・承認を結び、対象物を確認できなければ資産の重要性から被害を推定せず不足として残す。",
+        "query": "session:SHARE-911",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FILE-SRV-01"
+        ],
+        "sources": [
+          "認証",
+          "通信",
+          "業務",
+          "収集"
+        ],
+        "verdict": "insufficient",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "object-gap",
+        "evidence": [
+          {
+            "id": "event-auth-20260915-162002",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: event-auth-20260915-162002"
+          },
+          {
+            "id": "event-net-20260915-162007",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: event-net-20260915-162007"
+          },
+          {
+            "id": "collection-share-gateway",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: collection-share-gateway"
+          },
+          {
+            "id": "business-share-request",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: business-share-request"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: c04"
+      },
+      "operations": [
+        "search",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "c05": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "DET-PROC-17がProcessGuid付きの二つの入力を得られない時間に、FIN-WS-03で未確認プログラム由来の外部通信があったか調べる。境界フローで通信の存在を確認し、同時刻の実行を結べるか検証する。結べなければ悪性や実行元を推測せず、ルール依存の可視性と収集ヘルス監視の改善として残す。",
+        "reviewedHypothesis": "DET-PROC-17がProcessGuid付きの二つの入力を得られない時間に、FIN-WS-03で未確認プログラム由来の外部通信があったか調べる。境界フローで通信の存在を確認し、同時刻の実行を結べるか検証する。結べなければ悪性や実行元を推測せず、ルール依存の可視性と収集ヘルス監視の改善として残す。",
+        "query": "source:通信 destination:relay-room.example after:2026-09-14 before:2026-09-16",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FIN-WS-03"
+        ],
+        "sources": [
+          "通信",
+          "収集",
+          "端末",
+          "業務"
+        ],
+        "verdict": "insufficient",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "alternate-endpoint",
+        "evidence": [
+          {
+            "id": "event-net-20260915-103203",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: event-net-20260915-103203"
+          },
+          {
+            "id": "collection-finance-gap",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: collection-finance-gap"
+          },
+          {
+            "id": "collection-edge-flow",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: collection-edge-flow"
+          },
+          {
+            "id": "business-detection-process-egress",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: business-detection-process-egress"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: c05"
+      },
+      "operations": [
+        "search",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "d01": {
+      "draft": {
+        "hypothesis": "matching-chain",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "FIN-WS-02",
+          "SALES-WS-03"
+        ],
+        "sources": [
+          "端末",
+          "通信",
+          "業務"
+        ],
+        "verdict": "supported",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "expand-origin",
+        "evidence": [
+          {
+            "id": "ops-d01-seed",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-d01-seed"
+          },
+          {
+            "id": "ops-d01-seed-net",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-d01-seed-net"
+          },
+          {
+            "id": "ops-d01-spread",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-d01-spread"
+          },
+          {
+            "id": "ops-d01-spread-net",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-d01-spread-net"
+          },
+          {
+            "id": "ops-d01-other-plan",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-d01-other-plan"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: d01"
+      },
+      "operations": [
+        "search",
+        "aggregate",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "d02": {
+      "draft": {
+        "hypothesis": "outside-support",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "DESIGN-WS-02",
+          "SALES-WS-02"
+        ],
+        "sources": [
+          "端末",
+          "通信",
+          "業務"
+        ],
+        "verdict": "benign",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "bounded-support",
+        "evidence": [
+          {
+            "id": "ops-d02-plan",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-d02-plan"
+          },
+          {
+            "id": "ops-d02-DESIGN-exec",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-d02-DESIGN-exec"
+          },
+          {
+            "id": "ops-d02-SALES-exec",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-d02-SALES-exec"
+          },
+          {
+            "id": "ops-d02-DESIGN-net",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-d02-DESIGN-net"
+          },
+          {
+            "id": "ops-d02-SALES-net",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-d02-SALES-net"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: d02"
+      },
+      "operations": [
+        "search",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "d03": {
+      "draft": {
+        "hypothesis": "server-process",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "IDP-SRV-01",
+          "FILE-SRV-01"
+        ],
+        "sources": [
+          "端末",
+          "収集"
+        ],
+        "verdict": "unsubstantiated",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "scope-negative",
+        "evidence": [
+          {
+            "id": "ops-d03-idp-normal",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-d03-idp-normal"
+          },
+          {
+            "id": "ops-d03-file-normal",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-d03-file-normal"
+          },
+          {
+            "id": "ops-d03-coverage",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-d03-coverage"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: d03"
+      },
+      "operations": [
+        "search",
+        "compare"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "e01": {
+      "draft": {
+        "hypothesis": "temporary-action",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "IT-ADM-01",
+          "DEV-WS-03"
+        ],
+        "sources": [
+          "端末",
+          "収集"
+        ],
+        "verdict": "unsubstantiated",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "retain-condition",
+        "evidence": [
+          {
+            "id": "ops-e01-admin-now",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-e01-admin-now"
+          },
+          {
+            "id": "ops-e01-dev-now",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-e01-dev-now"
+          },
+          {
+            "id": "ops-e01-coverage",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-e01-coverage"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: e01"
+      },
+      "operations": [
+        "search",
+        "compare"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "e02": {
+      "draft": {
+        "hypothesis": "post-login-process",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "REMOTE-WS-01"
+        ],
+        "sources": [
+          "認証",
+          "収集"
+        ],
+        "verdict": "insufficient",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "collect-endpoint",
+        "evidence": [
+          {
+            "id": "ops-e02-auth",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-e02-auth"
+          },
+          {
+            "id": "ops-e02-coverage",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: ops-e02-coverage"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: e02"
+      },
+      "operations": [
+        "search",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "e03": {
+      "draft": {
+        "hypothesis": "permitted-egress",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "KIOSK-WS-01"
+        ],
+        "sources": [
+          "通信",
+          "収集"
+        ],
+        "verdict": "unsubstantiated",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "retain-denied",
+        "evidence": [
+          {
+            "id": "ops-e03-deny-1",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-e03-deny-1"
+          },
+          {
+            "id": "ops-e03-coverage",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-e03-coverage"
+          },
+          {
+            "id": "ops-e03-normal",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-e03-normal"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: e03"
+      },
+      "operations": [
+        "search",
+        "compare"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "l01": {
+      "draft": {
+        "hypothesis": "off-schedule-cron",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "WEB-SRV-01"
+        ],
+        "sources": [
+          "認証",
+          "ファイル",
+          "端末",
+          "業務"
+        ],
+        "verdict": "supported",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "trace-cron-origin",
+        "evidence": [
+          {
+            "id": "ops-l01-ssh",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-l01-ssh"
+          },
+          {
+            "id": "ops-l01-cron-before",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-l01-cron-before"
+          },
+          {
+            "id": "ops-l01-cron-now",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-l01-cron-now"
+          },
+          {
+            "id": "ops-l01-cron-run",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-l01-cron-run"
+          },
+          {
+            "id": "ops-l01-maintenance",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-l01-maintenance"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: l01"
+      },
+      "operations": [
+        "search",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "l02": {
+      "draft": {
+        "hypothesis": "unapproved-key",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "BUILD-SRV-01"
+        ],
+        "sources": [
+          "ファイル",
+          "認証",
+          "端末",
+          "業務"
+        ],
+        "verdict": "benign",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "key-scope",
+        "evidence": [
+          {
+            "id": "ops-l02-plan",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-l02-plan"
+          },
+          {
+            "id": "ops-l02-key-now",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-l02-key-now"
+          },
+          {
+            "id": "ops-l02-auth",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-l02-auth"
+          },
+          {
+            "id": "ops-l02-dispatch",
+            "role": "counter",
+            "note": "Saved v0.3 evidence note: ops-l02-dispatch"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: l02"
+      },
+      "operations": [
+        "search",
+        "compare",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "l03": {
+      "draft": {
+        "hypothesis": "upload-complete",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [],
+        "reflection": "",
+        "reviewedReflection": "",
+        "targets": [
+          "DEV-WS-02"
+        ],
+        "sources": [
+          "認証",
+          "収集",
+          "業務"
+        ],
+        "verdict": "insufficient",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "verify-receipt",
+        "evidence": [
+          {
+            "id": "ops-l03-archive",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-l03-archive"
+          },
+          {
+            "id": "ops-l03-send",
+            "role": "support",
+            "note": "Saved v0.3 evidence note: ops-l03-send"
+          },
+          {
+            "id": "ops-l03-coverage",
+            "role": "gap",
+            "note": "Saved v0.3 evidence note: ops-l03-coverage"
+          },
+          {
+            "id": "ops-l03-ticket",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-l03-ticket"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: l03"
+      },
+      "operations": [
+        "search",
+        "pivot"
+      ],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "g01": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "file-interactive",
+        "selections": [],
+        "reflection": "サービスアカウントの対話ログオンから後続実行を調べる問いは、今回の情報が示すfile-serviceという対象と行動に合う。FILE-SRV-01ではlogon_type・session・実行GUIDを取得でき、見積90分は2時間枠に入る。トークン再利用や遠隔端末の全実行は必要項目が不足し、可視性改善を先に確認する候補とする。",
+        "reviewedReflection": "サービスアカウントの対話ログオンから後続実行を調べる問いは、今回の情報が示すfile-serviceという対象と行動に合う。FILE-SRV-01ではlogon_type・session・実行GUIDを取得でき、見積90分は2時間枠に入る。トークン再利用や遠隔端末の全実行は必要項目が不足し、可視性改善を先に確認する候補とする。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "ops-g01-constraints",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-g01-constraints"
+          },
+          {
+            "id": "ops-g01-intel",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-g01-intel"
+          },
+          {
+            "id": "ops-g01-file-scope",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-g01-file-scope"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: g01"
+      },
+      "operations": [],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    },
+    "g02": {
+      "draft": {
+        "hypothesis": "",
+        "ownHypothesis": "",
+        "reviewedHypothesis": "",
+        "query": "",
+        "choice": "",
+        "selections": [
+          "scope-file",
+          "preserve-before-expiry",
+          "owner-review",
+          "weekly-and-change",
+          "sources-session"
+        ],
+        "reflection": "2時間でFILE-SRV-01の指定された基準期間と今回期間を比較する。サービスアカウントの対話ログオンを探し、sessionと実行GUIDで後続操作を照合する。file-service-teamへ業務条件を確認し、支持・正当な説明・裏付けなし・不足を観測範囲に限って記録する。9月20日までに条件と結果を保存し、週次または権限・収集・関連情報の変更時に次の実施を判断する。",
+        "reviewedReflection": "2時間でFILE-SRV-01の指定された基準期間と今回期間を比較する。サービスアカウントの対話ログオンを探し、sessionと実行GUIDで後続操作を照合する。file-service-teamへ業務条件を確認し、支持・正当な説明・裏付けなし・不足を観測範囲に限って記録する。9月20日までに条件と結果を保存し、週次または権限・収集・関連情報の変更時に次の実施を判断する。",
+        "targets": [],
+        "sources": [],
+        "verdict": "",
+        "from": "2026-09-14",
+        "to": "2026-09-16",
+        "finding": "",
+        "evidence": [
+          {
+            "id": "ops-g02-work-window",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-g02-work-window"
+          },
+          {
+            "id": "ops-g02-retention",
+            "role": "context",
+            "note": "Saved v0.3 evidence note: ops-g02-retention"
+          }
+        ],
+        "summary": "Saved v0.3 investigation note: g02"
+      },
+      "operations": [],
+      "completed": true,
+      "guideStep": 0,
+      "hintLevel": 0,
+      "filters": {
+        "query": "",
+        "source": "",
+        "host": "",
+        "period": "current",
+        "from": "",
+        "to": ""
+      },
+      "exitDraft": {},
+      "exitCompleted": false,
+      "tutorialActions": []
+    }
+  },
+  "lastTask": "g02",
+  "activeTask": "g02"
+}
