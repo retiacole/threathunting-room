@@ -4,13 +4,24 @@
 
 ## 日本語
 
-Node.js 18以上でビルドとテストを実行します。追加パッケージのインストールは不要です。演習を利用する人にはNode.jsは必要ありません。
+Node.js 20以上でビルドとテストを実行します。ビルドとNode.jsのテストには追加パッケージは不要です。ブラウザテストには開発専用のPlaywrightとChromiumを使います。配布HTMLにこれらは含まれず、演習を利用する人にはNode.jsもインストールも必要ありません。
 
 ```sh
 npm test
 npm run build
 npm run check:release
 ```
+
+実ブラウザのスモークテストは次で実行します。初回の依存関係・ブラウザの取得にはネットワーク接続が必要ですが、テスト対象の教材は `file://` で開きます。
+
+```sh
+npm ci
+npx playwright install chromium
+npm run build
+npm run test:browser
+```
+
+Linuxでブラウザ用のシステムライブラリも必要な場合は `npx playwright install --with-deps chromium` を使います。詳しくは[Playwright公式の導入手順](https://playwright.dev/docs/intro)を参照してください。`test:browser` は生成済みHTMLを検証するため、ソース変更後は先にビルドしてください。
 
 `npm test` は `tests/*.test.cjs` をNode.jsのテストランナーで実行します。`npm run build` は、本体の `build.cjs` を一時出力先で実行し、生成HTMLの基本構成を検査してから、次の5ファイルへ同じ内容を保存します。
 
@@ -39,6 +50,7 @@ npm run check:release
 | `src/tutorial.js`、`src/reports.js` | 操作ガイド、持ち帰り用の出力 |
 | `src/shell.html`、`src/style.css` | 単一HTMLの雛形、画面のスタイル |
 | `tests/` | 本体の自動テストと移行用データ |
+| `tests/browser/`、`playwright.config.cjs` | Chromiumで配布HTMLを開くスモークテスト |
 | `CONTRACT.md` | 教材データとエンジンの契約 |
 | `scripts/` | 公開用ビルドと静的検査 |
 | `docs/images/` | README専用のイラスト |
@@ -49,7 +61,9 @@ READMEの画像はアプリへ埋め込みません。HTMLは外部サービス�
 
 公開用の静的検査は、配布5ファイルの一致、インラインコードとJSONの構文、課題ID、外部依存や通信処理の混入、イラストの混入、一部のローカルパスを確認します。架空の `C:/Users/analyst` のようなWindowsパスは、macOSの個人用パスと区別します。
 
-本体の操作テストはNode.jsのVMと最小DOMを使います。実ブラウザのレイアウト、フォーカス、ファイル保存、読み込み、ストレージ制限は別途確認します。静的検査は個人情報の完全検出や英訳の網羅性を保証しません。公開前の確認項目は[公開手順](PUBLISHING.md)を参照してください。
+本体の操作テストはNode.jsのVMと最小DOMを使います。ブラウザスモークテストはChromiumで、日英の初期表示、PC幅と390px幅の入口、Tab/Enterでのチュートリアル起動、検索、詳細ダイアログのEscape操作、JavaScript無効時の概要とダウンロード案内を確認します。また、起動からこの操作までのJavaScript例外と外部HTTP(S)要求を検出します。全画面・全操作のレイアウトやアクセシビリティ、ファイル保存・読み込み、ストレージ制限、他のブラウザは別途確認します。静的検査は個人情報の完全検出や英訳の網羅性を保証しません。
+
+GitHub Actionsの `Tests` は `main` へのpushとPull Requestで、Node.jsテスト、ビルド、配布ファイルの更新漏れ、静的検査、ブラウザスモークテストを実行します。失敗時のスクリーンショットとトレースは7日間保存します。ローカルの `test-results/` はGitに含めません。公開前の確認項目は[公開手順](PUBLISHING.md)を参照してください。
 
 ### 今後の本体更新を取り込むとき
 
@@ -59,7 +73,9 @@ READMEの画像はアプリへ埋め込みません。HTMLは外部サービス�
 
 ## English
 
-Use Node.js 18 or later. No extra packages are needed. Learners only need a browser.
+Use Node.js 20 or later. The build and Node.js tests need no extra packages. Browser tests use Playwright and Chromium as development tools; neither is included in the standalone HTML. Learners only need a browser.
+
+For browser tests, run `npm ci`, `npx playwright install chromium`, `npm run build`, and `npm run test:browser`. On Linux, use `npx playwright install --with-deps chromium` if system libraries are missing. Installation requires network access; the tests open the generated HTML through `file://`. Rebuild after changing source files. See the [official Playwright setup guide](https://playwright.dev/docs/intro).
 
 Run `npm test`, `npm run build`, then `npm run check:release`. The build wrapper runs the application's `build.cjs` in a temporary directory, validates the result, and writes five identical standalone HTML files: `dist/index.html`, `index.html`, `threathunting-room.html`, `docs/index.html`, and `docs/threathunting-room.html`. It also creates `docs/.nojekyll`.
 
@@ -67,6 +83,10 @@ Course data lives in `src/content-*.cjs`; synthetic assets and logs live in `src
 
 Keep illustrations in the README. Do not add them to the application. Keep the app self-contained and offline. Changes to raw records, IDs, grading, or saved progress need matching migration checks.
 
-Release checks cover byte parity, script/JSON syntax, task IDs, external dependencies, common network APIs, illustrations, and some local paths. They intentionally allow fictional Windows paths. They do not replace a personal-data audit, translation review, or real-browser checks. Application tests use a Node.js VM and minimal DOM; verify layout, focus, downloads, imports, and storage separately in browsers.
+Release checks cover byte parity, script/JSON syntax, task IDs, external dependencies, common network APIs, illustrations, and some local paths. They intentionally allow fictional Windows paths. They do not replace a personal-data audit or translation review. Application tests use a Node.js VM and minimal DOM.
+
+Chromium smoke tests cover Japanese and English startup, desktop and 390px-wide entry screens, starting the tutorial with Tab/Enter, searching, dismissing log details with Escape, and the overview and download instructions with JavaScript disabled. They also detect JavaScript exceptions and external HTTP(S) requests during these interactions. Other screens, complete accessibility coverage, downloads, imports, storage restrictions, and other browsers still need separate checks.
+
+The `Tests` GitHub Actions workflow runs Node.js tests, builds, checks for stale distribution files, validates the release, and runs browser smoke tests on pushes and pull requests to `main`. Failure screenshots and traces are retained for seven days. Local `test-results/` files are ignored by Git.
 
 When the application is being updated, wait for a finalized source snapshot. Import `src/`, `tests/`, `build.cjs`, and `CONTRACT.md` from that same snapshot, without overwriting the publication documentation or scripts. Missing application files cause a clear failure, not a placeholder build. Reconcile the version, course counts, language support, and save compatibility after the import, then update the translation dictionaries and verify language switching with the new content.

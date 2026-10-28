@@ -59,7 +59,7 @@ test('reading in-practice notes does not change answers or completion',()=>{
   h.click(t.practiceNotes?'solution':'exit-solution');
   assert.match(h.elements.dialog.innerHTML,/<details class="practice-notes"><summary>実務では<\/summary>/);
   assert.doesNotMatch(h.elements.dialog.innerHTML,/<details class="practice-notes" open/);
-  for(const note of (t.practiceNotes||t.exit.practiceNotes))assert.ok(h.elements.dialog.innerHTML.includes(note.body));
+  for(const note of (t.practiceNotes||t.exit.practiceNotes))assert.ok(h.elements.dialog.innerHTML.includes(note.body.replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]))));
   assert.deepEqual(h.state,before);
  }
 });

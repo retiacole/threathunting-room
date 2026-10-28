@@ -2,6 +2,8 @@
 Thumbs.db
 node_modules/
 coverage/
+test-results/
+playwright-report/
 *.log
 *.tmp
 .env

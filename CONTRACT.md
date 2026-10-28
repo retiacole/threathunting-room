@@ -1,4 +1,4 @@
-# ThreatHunting-room v0.8.0 data contract
+# ThreatHunting-room v0.8.2 data contract
 
 ## Distribution and catalog
 
@@ -54,11 +54,11 @@ Query exercises require nonempty expected sets. Grade result sets, never express
 
 Validation negatives must be excluded by the stated task, not arbitrary mutations. C exercises inherit the same fixed date/filter scope for main and validation sets. C05 includes both TLS and non-TLS boundary flows; C04 explicitly targets authentication and /download responses. p04's exit requests a narrower UTC date within its fixed corpus; its examples demonstrate dates in both OR branches. The UI shows both grading scopes.
 
-Optional choices/selectionOptions are arrays of {id,label}, with choiceLabel/selectionLabel. hypothesisPrompt/modelHypothesis and reflectionPrompt/modelReflection enable prose exercises. selfReview requires nonempty ownHypothesis equal to reviewedHypothesis; reflection similarly requires reflection equal to reviewedReflection. Snapshots reflect explicit confirmation, not semantic correctness. Opening a comparison alone does not confirm it; edits invalidate confirmation.
+Optional choices/selectionOptions are arrays of {id,label}, with choiceLabel/selectionLabel. hypothesisPrompt/modelHypothesis and reflectionPrompt/modelReflection enable prose exercises. selfReview requires nonempty ownHypothesis equal to reviewedHypothesis; reflection similarly requires reflection equal to reviewedReflection. Snapshots reflect explicit confirmation, not semantic correctness. Opening a comparison alone does not confirm it; edits invalidate confirmation. Optional checklists beside comparison and report examples prompt self-review. Their check states are neither saved nor graded and do not replace the explicit confirmation or change completion criteria.
 
 An exit contains title, kind, prompt, choices/selectionOptions, modelReflection, rubric, explanation, and optionally logs. gradeExit uses exit logs if supplied, otherwise investigation logs. Controller/validation gate exit completion on investigation completion. Adding an exit does not erase investigation completion.
 
-Optional `practiceNotes:[{title,body}]` belong to I06/C01/C05/G02 tasks and P03/P04/F01 exits. `content-practice-notes.cjs` exports `{applyPracticeNotes,translations}`; the function returns a task array with notes attached after exits exist, without changing source tasks, logs or rubrics. Each note contains two to four sentences of ungraded, collapsible explanation. All titles and bodies have English translations. Notes explain practical follow-up without introducing organization-specific workflow assessments, ownership states or responsibility-transfer controls.
+Optional `practiceNotes:[{title,body,examples?}]` belong to I06/C01/C05/G02 tasks and P03/P04/F01 exits. Optional `examples:[{label,query}]` display escaped, untranslated query text beneath localized labels; they are reading material, not executable lesson queries. F01 includes SPL, KQL, and Sigma examples and an ATT&CK reference; C01/G02 add connections to hunting methodologies. `content-practice-notes.cjs` exports `{applyPracticeNotes,translations}`; the function returns a task array with notes attached after exits exist, without changing source tasks, logs or rubrics. Each note contains ungraded, collapsible explanation. All titles and bodies have English translations. Notes explain practical follow-up without introducing organization-specific workflow assessments, ownership states or responsibility-transfer controls.
 
 ## Pure engine API
 
@@ -118,7 +118,11 @@ JST display adds nine hours with date rollover to event cards, timelines, detail
 
 ## Verification boundary
 
-Engine/content tests and controller-handler tests cover 38 investigations, nine exits, alternative queries, held-out fixtures, migration, regrading, tutorial gating/resumption/isolation, exports and runtime hydration. Build tests require one self-contained HTML. Controller/view tests use Node VM and a minimal DOM; they do not validate real-browser layout, keyboard focus or native download behavior. Automated tests/builds do not start a web server. A user-authorized loopback server may be used temporarily for manual browser verification and must be stopped afterward.
+Engine/content tests and controller-handler tests cover 38 investigations, nine exits, alternative queries, held-out fixtures, migration, regrading, tutorial gating/resumption/isolation, exports, and runtime hydration. Build tests require one self-contained HTML. Controller/view tests use Node VM and a minimal DOM.
+
+`npm run test:browser` uses Playwright with Chromium to open generated HTML through `file://`. It checks startup in Japanese and English, the displayed release version and introductory lesson list, a narrow viewport without page overflow, Tab/Enter activation of the tutorial, a search and its results, opening a record dialog and closing it with Escape, no-JavaScript guidance, runtime errors, and unexpected HTTP(S) requests during the tested path. It needs Node.js 20 or later, development-only packages, and a browser installation; the learner's HTML has no runtime dependency. Tests and builds do not start a web server.
+
+These are smoke checks, not exhaustive layout or accessibility certification. Native downloads/imports, browser-specific storage restrictions, full keyboard flows, and other browser engines still require targeted verification. A temporary loopback server may be used for manual checks when needed and must be stopped afterward.
 
 ## v0.7 optional capstone and release identity
 
@@ -136,3 +140,9 @@ Engine/content tests and controller-handler tests cover 38 investigations, nine 
 - C03 labels distinguish stored-object hash matches from execution and subsequent activity; the existing evidence and completion criteria remain unchanged.
 - Optional questions open from “Try a little more” after the relevant prerequisites, with materials and two structured questions in a dialog. The learner can continue to another task without completing them. Investigation, exit and extension completion are distinct.
 - I06/P03/P04/C01/F01/C05/G02 practical notes are ungraded. No D04/G03 tasks, full detection engine, responsibility-transfer UI or organizational workflow assessment is introduced.
+
+## v0.8.2 entry and practice support
+
+- The HTML shell contains a course overview and study times before application startup, plus no-JavaScript guidance and an offline HTML link. The offline file still requires JavaScript. Description and Open Graph metadata describe the course without runtime execution.
+- Optional self-review prompts and practical query mappings are learning aids; they do not introduce semantic grading or change the progress schema.
+- SPL, KQL, and Sigma examples state their assumed fields and scope. ATT&CK references describe behavior, not a finding of malicious intent. PEAK/TaHiTI comparisons are teaching connections, not claims of framework certification.

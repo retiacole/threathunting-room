@@ -762,5 +762,12 @@
   "追加体験の回答の形式が正しくありません。": "The optional exercise answers have an invalid format.",
   "追加体験の回答に使用できない項目があります。": "The optional exercise answers contain an unsupported property.",
   "追加体験にない質問が含まれています。": "An answer refers to a question that is not in this optional exercise.",
-  "追加体験の選択肢の形式または値が正しくありません。": "An optional exercise choice has an invalid format or value."
+  "追加体験の選択肢の形式または値が正しくありません。": "An optional exercise choice has an invalid format or value.",
+  "自己確認チェックリスト（任意）": "Self-review checklist (optional)",
+  "該当しない項目は、その理由を考えてください。チェックは保存・採点されず、画面を開き直すと消えます。振り返りは自分の記述に残します。": "If an item does not apply, consider why. These checkmarks are not saved or graded and reset when you reopen the dialog. Record your reflections in your own writing.",
+  "対象・期間・使うログを具体的に書いたか。": "Have I specified the targets, time period, and logs?",
+  "観測した事実と推測を分け、根拠の記録や検索条件を示したか。": "Have I separated observations from inferences and identified the supporting records or queries?",
+  "正当な業務や収集漏れなど、代替説明を1つ以上検討したか。": "Have I considered at least one alternative explanation, such as legitimate work or missing telemetry?",
+  "観測できていない範囲と、まだ判断できないことを書いたか。": "Have I stated what I could not observe and what remains uncertain?",
+  "模範例との差、直したい点、次に確認することを自分の記述に残したか。": "Have I recorded differences from the example, revisions to make, and the next checks in my own writing?"
 }
