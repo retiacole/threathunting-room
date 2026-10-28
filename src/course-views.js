@@ -61,9 +61,20 @@ function exitPanel(t,s,ui,tasks){
  if(!s.completed)return '<div class="empty">先に調査の証拠と回答を確認してください。<br>調査を完了すると、この事案の成果物を作れます。</div>';
  return `<div class="exit-panel"><span class="badge amber">調査の次の一歩</span><h3>${esc(x.title)}</h3><p class="small">${esc(x.prompt)}</p>${queryForm(t,d,true)}${x.choices?.length?choices(x.choices,d.choice,'choice',x.choiceLabel||'引き継ぐ判断',true):''}${x.selectionOptions?.length?selection(x.selectionOptions,d.selections,'selections',x.selectionLabel||'必要な項目',true):''}${x.rubric?.reflection?`<div class="form-field"><label for="exit-reflection">成果物の内容を自分で書く</label><textarea id="exit-reflection" data-exit="reflection" maxlength="4000">${esc(d.reflection||'')}</textarea><button class="btn small" data-action="compare-exit-reflection">模範例と比べる</button><p class="small muted">${d.reflection&&d.reviewedReflection===d.reflection?'✓ 比較を記録済み':'比較した後に、確認を記録してください。'}</p></div>`:''}<button class="btn primary wide" data-action="grade-exit">成果物を確認する</button><button class="btn quiet small wide" data-action="exit-solution">出口の解説を見る</button>${ui.exitQueryResult?queryResult(ui.exitQueryResult,x.rubric.query?.validation?.logs||[],ui):''}${ui.exitGrade?`<div class="feedback ${ui.exitGrade.passed?'':'pending'}"><h3>${ui.exitGrade.passed?'✓ 成果物の段階を完了しました':'成果物を見直しましょう'}</h3>${ui.exitGrade.criteria.map(c=>`<p class="small">${c.passed?'✓':'○'} ${esc(c.label)}${c.passed?'':'：'+esc(c.detail)}</p>`).join('')}</div>`:''}${extensionLink(t,s)}<button class="btn wide" data-action="export-report">成果物を含むハント記録を保存</button>${s.exitCompleted&&following?`<button class="btn primary wide" data-action="start" data-id="${following.id}">次のタスクへ →</button>`:""}</div>`;
 }
+// Optional, dialog-local prompts: these inputs never enter grading or saved progress.
+function selfReviewChecklist(){
+ const items=[
+  '対象・期間・使うログを具体的に書いたか。',
+  '観測した事実と推測を分け、根拠の記録や検索条件を示したか。',
+  '正当な業務や収集漏れなど、代替説明を1つ以上検討したか。',
+  '観測できていない範囲と、まだ判断できないことを書いたか。',
+  '模範例との差、直したい点、次に確認することを自分の記述に残したか。'
+ ];
+ return `<fieldset class="self-review-checklist form-field"><legend class="field-label">自己確認チェックリスト（任意）</legend><p class="small muted">該当しない項目は、その理由を考えてください。チェックは保存・採点されず、画面を開き直すと消えます。振り返りは自分の記述に残します。</p>${items.map(item=>`<label class="check-label"><input type="checkbox" data-self-review><span>${esc(item)}</span></label>`).join('')}</fieldset>`;
+}
 function practiceNotes(owner){
  if(!owner?.practiceNotes?.length)return '';
- return `<details class="practice-notes"><summary>実務では</summary>${owner.practiceNotes.map(note=>`<section><h3>${esc(note.title)}</h3><p>${esc(note.body)}</p></section>`).join('')}</details>`;
+ return `<details class="practice-notes"><summary>実務では</summary>${owner.practiceNotes.map(note=>`<section><h3>${esc(note.title)}</h3><p class="preserve-lines">${esc(note.body)}</p>${(note.examples||[]).map(example=>`<h4>${esc(example.label)}</h4><pre><code>${esc(example.query)}</code></pre>`).join('')}</section>`).join('')}</details>`;
 }
 function extensionReady(t,s){return Boolean(t?.extension&&s?.completed&&(!t.exit||s.exitCompleted));}
 function extensionLink(t,s){
@@ -74,5 +85,5 @@ function extensionPanel(t,s,result){
  const x=t.extension,answers=s.extensionAnswers||{},table=x.table;
  return `<section class="extension-exercise"><p class="small muted">本編の完了と次の課題への進行には影響しません。</p><p>${esc(x.intro)}</p><div class="table-wrap extension-table" tabindex="0" role="region" aria-label="追加体験の資料"><table><caption>${esc(table.caption)}</caption><thead><tr>${table.columns.map(col=>`<th scope="col">${esc(col.label)}</th>`).join('')}</tr></thead><tbody>${table.rows.map(row=>`<tr>${table.columns.map(col=>`<td>${esc(row[col.key])}</td>`).join('')}</tr>`).join('')}</tbody></table></div>${x.questions.map(q=>`<fieldset class="form-field answer-options"><legend class="field-label">${esc(q.prompt)}</legend>${q.options.map(o=>`<label class="answer-choice"><input id="extension-${esc(t.id)}-${esc(q.id)}-${esc(o.id)}" type="radio" name="extension-${esc(q.id)}" data-extension-answer="${esc(q.id)}" value="${esc(o.id)}" ${answers[q.id]===o.id?'checked':''}><span>${esc(o.label)}</span></label>`).join('')}</fieldset>`).join('')}<button class="btn primary" data-action="grade-extension">追加体験の回答を確認する</button>${result?`<div class="feedback extension-feedback ${result.passed?'':'pending'}" role="status" tabindex="-1"><h3>${result.passed?'✓ 追加体験を完了しました':'資料と回答をもう一度確かめましょう'}</h3>${result.criteria.map(c=>{const q=x.questions.find(q=>q.id===c.id);return `<section><h4>${c.passed?'✓':'○'} ${esc(q.prompt)}</h4><p>${esc(q.explanation)}</p></section>`;}).join('')}<p class="extension-takeaway">${esc(x.takeaway)}</p></div>`:''}<button class="btn quiet" data-action="close-dialog">課題へ戻る</button></section>`;
 }
-root.THCourse={home,tutorial,assets,reflection,additionalAnswers,queryResult,exitPanel,chapters,chapter,next,practiceNotes,extensionReady,extensionLink,extensionPanel};
+root.THCourse={home,tutorial,assets,reflection,additionalAnswers,queryResult,exitPanel,chapters,chapter,next,practiceNotes,selfReviewChecklist,extensionReady,extensionLink,extensionPanel};
 })(window);

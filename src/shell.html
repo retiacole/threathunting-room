@@ -4,15 +4,49 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="description" content="仮説を立てる。痕跡を探す。根拠で確かめる。ブラウザで学ぶThreat Hunting。操作チュートリアルと本編38タスク。調査の道具から、会社で最初のハントを計画するまで。">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ThreatHunting-room">
+<meta property="og:title" content="ThreatHunting-room — 仮説からはじめる脅威ハンティング">
+<meta property="og:description" content="合成ログで仮説・検索・証拠・報告を練習。チュートリアル5〜8分、本編38問。日本語・English対応、HTMLひとつでオフラインでも学べます。">
+<meta property="og:url" content="https://retiacole.github.io/threathunting-room/">
+<meta property="og:locale" content="ja_JP">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image" content="https://retiacole.github.io/threathunting-room/images/threathunting-room-banner.png">
+<meta property="og:image:width" content="2171">
+<meta property="og:image:height" content="724">
+<meta property="og:image:alt" content="A hooded hunter follows footprints through a moonlit forest with a lantern and magnifying glass.">
+<meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#0d171b">
 <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data:; connect-src 'none'; base-uri 'none'; form-action 'none'">
 <title>ThreatHunting-room — 仮説からはじめる脅威ハンティング</title>
 <style>/* STYLES */</style>
+<noscript><style>.startup .loading,#toast{display:none}</style></noscript>
 </head>
 <body>
 <a class="skip" href="#main">本文へ移動</a>
-<div id="app"><div class="loading">ThreatHunting-room を読み込んでいます…</div></div>
-<noscript>この教材にはJavaScriptが必要です。JavaScriptを有効にしたブラウザでHTMLファイルを開いてください。</noscript>
+<div id="app">
+  <main id="main" class="startup" tabindex="-1">
+    <p class="eyebrow">OFFLINE THREAT HUNTING PRACTICE</p>
+    <h1>ThreatHunting-room</h1>
+    <p class="startup-tagline">仮説を立てる。痕跡を探す。根拠を次の行動へつなげる。</p>
+    <p>架空の環境と合成ログで、検索・比較・証拠の整理・報告を練習する教材です。仮説を支持する根拠だけでなく、別の説明や観測できていない範囲も確かめます。</p>
+    <p><strong>操作チュートリアル：5〜8分。本編38問：1問5〜30分が目安。</strong>任意の卒業演習もあります。好きな区切りで進められます。</p>
+    <p>インストール・アカウント登録は不要です。演習にはJavaScriptが必要で、単一HTMLを保存すればオフラインでも利用できます。</p>
+    <div lang="en" class="startup-english">
+      <p><strong>Practice threat hunting with synthetic logs, from forming a hypothesis to reporting evidence and limits.</strong></p>
+      <p>Start with a 5–8 minute tutorial, then explore 38 lessons of about 5–30 minutes each and an optional capstone. Japanese and English are available. No installation or account is needed; the saved HTML works offline in a browser with JavaScript enabled.</p>
+    </div>
+    <p class="startup-links"><a href="https://retiacole.github.io/threathunting-room/threathunting-room.html" download="threathunting-room.html">オフライン用HTMLを保存 / Download offline HTML</a></p>
+    <p class="loading" role="status">教材を準備しています。表示が進まない場合は、JavaScriptの設定とファイルの保存状態を確認してください。<br><span lang="en">Loading the lessons. If this message remains, check that JavaScript is enabled and the file downloaded completely.</span></p>
+  </main>
+</div>
+<noscript>
+  <section class="startup startup-noscript" aria-label="JavaScriptの設定 / JavaScript required">
+    <h2>JavaScriptが必要です / JavaScript required</h2>
+    <p>このブラウザでは演習を開始できません。JavaScriptを有効にするか、<a href="https://retiacole.github.io/threathunting-room/threathunting-room.html" download="threathunting-room.html">オフライン用HTMLを保存</a>して、JavaScriptを実行できるブラウザで開いてください。保存済みのHTMLはそのまま開けます。オフライン版もJavaScriptが必要です。</p>
+    <p lang="en">Enable JavaScript, or <a href="https://retiacole.github.io/threathunting-room/threathunting-room.html" download="threathunting-room.html">save the offline HTML</a> and open it in a browser that allows JavaScript. If you already saved the HTML, open that file directly. The offline version also requires JavaScript.</p>
+  </section>
+</noscript>
 <div id="toast" role="status" aria-live="polite"></div>
 <dialog id="dialog" aria-labelledby="dialog-title"></dialog>
 <input id="import-file" type="file" accept="application/json,.json" hidden>

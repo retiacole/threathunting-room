@@ -56,12 +56,50 @@ const exitNotes = {
   )],
 };
 
+// Translation examples are reading material, never executable in the course engine.
+exitNotes.f01.push({
+  ...note(
+    'この検索を実際の製品へ移すには',
+    'Translate this query to a real product',
+    'F01の検索は、文書アプリを親とするPowerShell起動の候補を取り出します。docview.exeは教材の架空名です。以下は構文の対応例で、実環境での動作・精度を検証したルールではありません。SPLは演習用index=threathunting / sourcetype=threathunting:processと、実行ファイル名だけを持つparent・processフィールドを仮定します。KQLはMicrosoft Defender XDRのDeviceProcessEventsを仮定し、必要なセンサーと収集を確認します。両方とも実行時に同じ対象とUTC期間を設定します。SigmaはフルパスのImage・ParentImageを持つWindowsプロセス作成ログ用の抜粋で、実際のバックエンドとフィールド変換が必要です。通信との相関、正当な業務との比較、名前変更による見逃しの確認は別途行います。詳細と出典はリポジトリのdocs/PRACTICE_BRIDGE.md（English: docs/PRACTICE_BRIDGE.en.md）にあります。',
+    'The F01 query finds candidate PowerShell launches from a document application. docview.exe is a fictional course name. These examples show syntax mappings; they are not rules validated for production behavior or accuracy. SPL assumes a training index named threathunting, a threathunting:process sourcetype, and parent/process fields containing executable basenames. KQL assumes Microsoft Defender XDR DeviceProcessEvents; check that the required sensors and collection are available. Set the same targets and UTC time range in both products when running the queries. The Sigma fragment assumes Windows process-creation logs with full Image and ParentImage paths and needs a backend and field mapping. Network correlation, legitimate-work comparisons, and checks for renamed executables remain separate. Details and sources are in the repository at docs/PRACTICE_BRIDGE.en.md (Japanese: docs/PRACTICE_BRIDGE.md).'
+  ),
+  examples: [
+    {label: tr('教材の検索', 'Course query'), query: 'source:端末 parent:docview.exe process:powershell.exe'},
+    {label: 'Splunk SPL', query: 'index=threathunting sourcetype="threathunting:process" parent="docview.exe" process="powershell.exe"\n| table _time host parent process process_guid'},
+    {label: 'Microsoft Defender XDR / KQL', query: 'DeviceProcessEvents\n| where ActionType == "ProcessCreated"\n| where InitiatingProcessFileName =~ "docview.exe" and FileName =~ "powershell.exe"\n| project Timestamp, DeviceId, DeviceName, InitiatingProcessFileName, FileName, ProcessId, ProcessCreationTime'},
+    {label: tr('Sigma（ルールの抜粋）', 'Sigma (rule fragment)'), query: "logsource:\n  category: process_creation\n  product: windows\ndetection:\n  selection:\n    ParentImage|endswith: '\\docview.exe'\n    Image|endswith: '\\powershell.exe'\n  condition: selection"}
+  ]
+});
+exitNotes.f01.push(note(
+  'ATT&CKで行動を言い表す',
+  'Describe behavior with ATT&CK',
+  'PowerShellによるコマンド・スクリプト実行は、MITRE ATT&CKのT1059.001（PowerShell）を参照して調査の観点を共有できます。このプロセス名が見えただけでは、悪用や侵害を認定できません。この検索でT1059.001全体を検知できるわけでもありません。docview.exeからの起動、スクリプト内容、実行者、来歴、後続の通信を合わせて確認し、未確認の通信目的に別の技法IDを断定的に付けないようにします。',
+  'Use MITRE ATT&CK T1059.001 (PowerShell) as a reference when discussing command and script execution through PowerShell. Seeing the process name alone does not establish abuse or compromise, and this query does not cover every instance of T1059.001. Review the parent application, script content, account, provenance, and subsequent traffic together. Do not assign another technique solely on an unverified assumption about the purpose of a connection.'
+));
+taskNotes.c01.push(note(
+  '外部情報から、検証可能な問いへ',
+  'Turn external intelligence into a testable question',
+  'TaHiTI（Targeted Hunting integrating Threat Intelligence）は、脅威情報をハントの起点や調査中の文脈に結び付ける方法です。C01では「外部で報告されたから、この環境でも侵害があった」とせず、対象・期間・必要ログ・別の説明を定めます。ATT&CK T1059.001（PowerShell）は行動を表す参照先として使い、観測していない攻撃段階や攻撃者まで推定しません。',
+  'TaHiTI (Targeted Hunting integrating Threat Intelligence) connects threat intelligence to the starting point and context of a hunt. In C01, define targets, a time period, required logs, and alternative explanations instead of treating an external report as proof of compromise here. Use ATT&CK T1059.001 (PowerShell) to describe the behavior under investigation without inferring unobserved attack stages or an actor.'
+));
+taskNotes.g02.push(note(
+  'ハントの手法と教材をつなぐ',
+  'Connect the course to hunting methodologies',
+  'PEAKはPrepare・Execute・Actの各段階にKnowledgeを生かす枠組みです。教材との対応例として、A/C/Gの可視性・問い・計画をPrepare、B/D/Lなどでの比較と検証をExecute、成果物の検知候補・引継ぎ・改善をActとして振り返れます。TaHiTIのInitiate・Hunt・Finalizeにも、調査の開始・実施・結果の整理を照らせます。これは学習のための対応例で、どちらの手法の全工程も再現・認定するものではありません。詳しい対応と公式資料はリポジトリの実務への橋渡しガイドにあります。',
+  'PEAK applies Knowledge throughout Prepare, Execute, and Act. As a learning crosswalk, relate visibility, hypotheses, and planning in A/C/G to Prepare; comparisons and investigation in chapters such as B/D/L to Execute; and detection candidates, handoffs, and improvements in the deliverables to Act. TaHiTI uses Initiate, Hunt, and Finalize to organize the beginning, investigation, and outcome of a hunt. These are learning connections, not a complete implementation or certification of either methodology. The repository practice bridge guide provides the crosswalk and official sources.'
+));
+
+function cloneNote(item) {
+  return {...item, ...(item.examples ? {examples: item.examples.map(example => ({...example}))} : {})};
+}
+
 function applyPracticeNotes(tasks) {
   return tasks.map(task => {
-    if (taskNotes[task.id]) return {...task, practiceNotes: taskNotes[task.id].map(item => ({...item}))};
+    if (taskNotes[task.id]) return {...task, practiceNotes: taskNotes[task.id].map(cloneNote)};
     if (exitNotes[task.id]) {
       if (!task.exit) throw new Error('Practice notes require an exit for ' + task.id);
-      return {...task, exit: {...task.exit, practiceNotes: exitNotes[task.id].map(item => ({...item}))}};
+      return {...task, exit: {...task.exit, practiceNotes: exitNotes[task.id].map(cloneNote)}};
     }
     return task;
   });

@@ -10,6 +10,16 @@ for (const name of ['README.md', 'README.en.md', 'LICENSE', 'SECURITY.md', 'CONT
 }
 const pkg = JSON.parse(fs.readFileSync(path.join(root, 'package.json'), 'utf8'));
 if (pkg.name !== 'threathunting-room' || pkg.author !== 'retiacole' || pkg.license !== 'MIT' || pkg.private !== true) errors.push('Unexpected package identity, license or private flag.');
+for (const name of ['README.md', 'README.en.md', 'CONTRACT.md', 'docs/CURRICULUM.md', 'docs/CURRICULUM.en.md']) {
+  const file = path.join(root, name);
+  if (!fs.existsSync(file)) { errors.push(`Missing versioned document: ${name}`); continue; }
+  const heading = fs.readFileSync(file, 'utf8').split('\n').find(line => /^# /.test(line));
+  const version = heading && heading.match(/\bv(\d+\.\d+\.\d+)\b/);
+  if (!version || version[1] !== pkg.version) errors.push(`Document heading must match v${pkg.version}: ${name}`);
+}
+const changelogPath = path.join(root, 'CHANGELOG.md');
+const latestRelease = fs.existsSync(changelogPath) && fs.readFileSync(changelogPath, 'utf8').match(/^## v(\d+\.\d+\.\d+)\b/m);
+if (!latestRelease || latestRelease[1] !== pkg.version) errors.push(`CHANGELOG.md must start with a release entry for v${pkg.version}.`);
 if (fs.existsSync(path.join(root, aliases[0]))) {
   const reference = fs.readFileSync(path.join(root, aliases[0]));
   errors.push(...checkHtml(reference.toString('utf8')));

@@ -14,6 +14,15 @@ test('distribution builds as one self-contained HTML with parseable inline data 
     assert.deepEqual(fs.readdirSync(out),['index.html']);
     const html=fs.readFileSync(path.join(out,'index.html'),'utf8');
     assert.ok(html.includes("connect-src 'none'"));
+    const staticBody=html.split('<script')[0];
+    assert.match(staticBody,/<main id="main"[^>]*>[\s\S]*<h1>ThreatHunting-room<\/h1>/);
+    assert.match(staticBody,/操作チュートリアル：5〜8分/);
+    assert.match(staticBody,/38 lessons/);
+    const noScriptBody=staticBody.split('<body>')[1].match(/<noscript>([\s\S]*?)<\/noscript>/)[1];
+    assert.ok(noScriptBody.includes('<a href="https://retiacole.github.io/threathunting-room/threathunting-room.html" download="threathunting-room.html">'));
+    for(const property of ['og:title','og:description','og:type','og:url','og:image']) {
+      assert.ok(html.includes('property="'+property+'" content="'), 'Missing preview metadata: '+property);
+    }
     assert.doesNotMatch(html,/<(?:script|link|img|iframe)\b[^>]*(?:src|href)\s*=/i);
     assert.doesNotMatch(html,/\/\* (?:STYLES|DATA|ENGINE|APP|TRANSLATIONS|I18N) \*\//);
     const scripts=[...html.matchAll(/<script([^>]*)>([\s\S]*?)<\/script>/g)];

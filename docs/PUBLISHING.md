@@ -21,9 +21,12 @@
 npm test
 npm run build
 npm run check:release
+npm ci
+npx playwright install chromium
+npm run test:browser
 ```
 
-次も確認します。
+ブラウザスモークテストは生成済みHTMLをChromiumで確認します。対象範囲と初回セットアップは[開発ガイド](DEVELOPMENT.md)を参照してください。次も確認します。
 
 - オフラインの `file://` で、チュートリアル・検索・採点・保存JSONの書き出しと読み込みが動く。
 - 日本語と英語を切り替えても、入力途中の内容・ログ・採点・進捗が変わらない。設問・ヒント・解説の翻訳漏れを確認する。
@@ -32,19 +35,18 @@ npm run check:release
 - 公開ファイル、テスト用データ、画像メタデータに、意図しない個人名・メール・ローカルパス・実組織データ・認証情報がない。
 - READMEの画像と相対リンクが正しく、公開後のURLと一致する。現時点の自動検査結果だけで、手動確認まで完了したことにしない。
 
-## 3. 新しい履歴を作る
+## 3. 変更履歴を残す
 
-最終的な公開フォルダーだけを対象に、新規リポジトリを初期化します。既存プロジェクトのGit履歴はコピーしません。
+既存の公開リポジトリをcloneした作業場所で、目的ごとに変更と検証結果をまとめてコミットします。公開済み履歴の初期化や書き換えは行いません。初回公開時だけ、公開するファイルを確認した新規フォルダーで `git init -b main` を実行します。
 
 ```sh
-git init -b main
-git config --local user.name retiacole
-git config --local user.email culture_epic_13@icloud.com
-git config --local user.useConfigOnly true
+git status --short
+git config user.name
+git config user.email
 git add .
 git diff --cached --stat
 git diff --cached --check
-git commit -m "Publish ThreatHunting-room"
+git commit -m "Describe the change and its purpose"
 git show -s --format=fuller HEAD
 ```
 
@@ -54,7 +56,7 @@ git show -s --format=fuller HEAD
 
 GitHubに公開リポジトリ `retiacole/threathunting-room` を用意し、確認済みの `main` をpushします。日本語と英語を併記したAbout欄、ブラウザ版のURLを設定します。
 
-Pagesの公開元は **Settings → Pages → Deploy from a branch → main → /docs** とします。`docs/.nojekyll` を含め、生成済みのHTMLを配信します。この構成のために独自のワークフローは追加しません。設定の詳細は[GitHub公式の公開元の説明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)を参照してください。
+Pagesの公開元は **Settings → Pages → Deploy from a branch → main → /docs** とします。`docs/.nojekyll` を含め、生成済みのHTMLを配信します。`.github/workflows/test.yml` は検証専用で、Pagesの公開処理は変更しません。設定の詳細は[GitHub公式の公開元の説明](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site)を参照してください。
 
 実際の版番号でReleaseを作成し、ルートの `threathunting-room.html` を添付します。READMEでReleaseの「最新版ダウンロード」リンクを使う場合は、添付ファイル名と一致させます。Pagesの名前付きHTMLを保存しても同じオフライン版になります。
 
@@ -64,8 +66,8 @@ Pagesの公開元は **Settings → Pages → Deploy from a branch → main → 
 
 The intended repository is `retiacole/threathunting-room`, with Pages at `https://retiacole.github.io/threathunting-room/`. Build scripts do not create repositories, push commits, or publish releases.
 
-Wait for the application update to be finalized. Import one consistent source-and-test snapshot, finish language-menu integration and translations, reconcile the documentation, then run the three commands above. Check offline operation, save migration, language switching, layout, and the absence of illustrations in the app. Review text files, fixtures, image metadata, and eventual commit metadata for unintended personal information.
+Wait for the application update to be finalized. Import one consistent source-and-test snapshot, finish language-menu integration and translations, reconcile the documentation, then run the commands above, including browser smoke tests. Check offline operation, save migration, language switching, layout, and the absence of illustrations in the app. Review text files, fixtures, image metadata, and eventual commit metadata for unintended personal information.
 
-Create a fresh Git history for the final publication folder, using the repo-local identity shown above. Do not copy an earlier `.git` directory or include staging/review files. Check an existing repository before publishing; do not delete it or force-push over it as part of these instructions.
+For updates, work from a clone of the published repository and retain its history. Make focused commits and record what was tested. Initialize a new repository only for a first publication. Check the author and committer identity before publishing, and leave out staging and review files. Do not delete the repository or force-push over its history.
 
-Publish the validated `main` branch. Configure Pages to deploy from `main` and `/docs`, including `.nojekyll`; see the [official GitHub Pages instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site). Attach `threathunting-room.html` to a release tagged with the actual application version. Verify the live site and downloaded file before enabling profile links. An English README alone does not mean the application is available in English.
+Publish the validated `main` branch. Configure Pages to deploy from `main` and `/docs`, including `.nojekyll`; see the [official GitHub Pages instructions](https://docs.github.com/en/pages/getting-started-with-github-pages/configuring-a-publishing-source-for-your-github-pages-site). The `Tests` workflow validates changes without changing the Pages deployment method. Attach `threathunting-room.html` to a release tagged with the actual application version. Verify the live site and downloaded file before enabling profile links. An English README alone does not mean the application is available in English.
