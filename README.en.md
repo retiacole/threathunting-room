@@ -2,7 +2,7 @@
   <img src="docs/images/threathunting-room-banner.png" width="960" alt="The ThreatHunting-room ranger examines footprints with a lantern and magnifying glass in a moonlit forest">
 </p>
 
-# ThreatHunting-room v0.8.0
+# ThreatHunting-room v0.8.1
 
 [日本語](README.md) · [English](README.en.md)
 
@@ -35,7 +35,7 @@ The app and documentation were created with the help of AI (OpenAI Codex). The m
 
 You can also use **Download raw file** on [threathunting-room.html](threathunting-room.html) in the repository. See the [user guide](docs/USER_GUIDE.en.md) for detailed instructions.
 
-Use the **Language** menu in the header to switch between Japanese and English, including lessons, hints, and explanations. Progress and your input are shared across languages. Raw logs, identifiers, and query values stay unchanged.
+The initial display uses Japanese when it is your browser's first language preference, and English otherwise. A choice made in the header's **Language** menu takes precedence on later visits. Lessons, hints, and explanations switch together. Progress and your input are shared across languages. Raw logs, identifiers, and query values stay unchanged.
 
 ## What you will practice
 

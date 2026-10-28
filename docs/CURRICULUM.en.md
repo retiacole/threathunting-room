@@ -1,4 +1,4 @@
-# Learning map (v0.8.0)
+# Learning map (v0.8.1)
 
 [README](../README.en.md) · [日本語](CURRICULUM.md) · [User guide](USER_GUIDE.en.md)
 

@@ -2,8 +2,18 @@
 (function (root) {
   'use strict';
   const KEY = 'threat-hunting-room.language.v1';
-  let language = 'ja';
-  try { if (root.localStorage?.getItem(KEY) === 'en') language = 'en'; } catch (_) { /* Storage is optional. */ }
+  function browserLanguage() {
+    try {
+      const browser = root.navigator;
+      const preferred = (Array.isArray(browser?.languages) ? browser.languages.find(value => typeof value === 'string' && value.trim()) : '') || browser?.language || '';
+      return typeof preferred === 'string' && /^ja(?:-|$)/i.test(preferred.trim()) ? 'ja' : 'en';
+    } catch (_) { return 'en'; }
+  }
+  let language = browserLanguage();
+  try {
+    const saved = root.localStorage?.getItem(KEY);
+    if (saved === 'ja' || saved === 'en') language = saved;
+  } catch (_) { /* Storage is optional. */ }
   const dictionaryNode = root.document?.getElementById('translation-data');
   const dictionary = dictionaryNode ? JSON.parse(dictionaryNode.textContent) : {};
   const originals = new WeakMap(), attributes = new WeakMap();
