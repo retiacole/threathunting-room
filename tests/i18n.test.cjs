@@ -7,6 +7,51 @@ const vm=require('node:vm');
 const {boot,complete}=require('./support/driver.cjs');
 const runtime=fs.readFileSync(path.join(__dirname,'../src/i18n.js'),'utf8');
 const ui=JSON.parse(fs.readFileSync(path.join(__dirname,'../src/i18n-ui.en.json'),'utf8'));
+function initialLanguage(navigator, saved = null, storageBlocked = false) {
+  const writes = [];
+  const context = {navigator, localStorage: {
+    getItem(){if(storageBlocked)throw new Error('storage unavailable');return saved;},
+    setItem(key,value){if(storageBlocked)throw new Error('storage unavailable');writes.push([key,value]);}
+  }};
+  context.window = context;
+  vm.createContext(context);vm.runInContext(runtime,context);
+  return {I:context.THI18n,writes};
+}
+test('initial language uses the first browser preference: Japanese or English fallback',()=>{
+  for(const [navigator,expected] of [
+    [{languages:['ja-JP','en-US'],language:'en-US'},'ja'],
+    [{languages:['JA-jp'],language:'en-US'},'ja'],
+    [{languages:['en-US','ja-JP'],language:'ja-JP'},'en'],
+    [{languages:['fr-FR','ja-JP'],language:'ja-JP'},'en'],
+    [{languages:['th-TH']},'en'],
+    [{languages:['javanese']},'en'],
+    [{languages:['',null,'  ',' ja ']},'ja'],
+    [{languages:[],language:'ja-JP'},'ja'],
+    [{language:'ja'},'ja'],
+    [{language:'de-DE'},'en'],
+    [{},'en'],
+    [undefined,'en']
+  ]){
+    const e=initialLanguage(navigator);
+    assert.equal(e.I.language,expected,JSON.stringify(navigator));
+    assert.deepEqual(e.writes,[],'automatic detection must not persist as a manual preference');
+  }
+});
+test('a valid saved language takes precedence and unavailable storage still permits automatic and manual choices',()=>{
+  assert.equal(initialLanguage({languages:['en-US']},'ja').I.language,'ja');
+  assert.equal(initialLanguage({languages:['ja-JP']},'en').I.language,'en');
+  assert.equal(initialLanguage({languages:['ja-JP']},'th').I.language,'ja');
+  assert.equal(initialLanguage({languages:['de-DE']},'invalid').I.language,'en');
+  const e=initialLanguage({languages:['ja-JP']},'en',true);
+  assert.equal(e.I.language,'ja');
+  assert.equal(e.I.setLanguage('en'),true);
+  assert.equal(e.I.language,'en');
+  assert.equal(e.I.setLanguage('th'),false);
+  assert.equal(e.I.language,'en');
+  const manual=initialLanguage({languages:['en-US']});
+  manual.I.setLanguage('ja');
+  assert.deepEqual(manual.writes,[['threat-hunting-room.language.v1','ja']]);
+});
 function environment(dictionary=ui,language='ja') {
   const writes=[],nodes=[],elements=[],document={body:null,documentElement:{lang:'ja'},
     getElementById:id=>id==='translation-data'?{textContent:JSON.stringify(dictionary)}:null,

@@ -1,5 +1,10 @@
 # 変更履歴 / Changelog
 
+## v0.8.1 — 2026-10-28
+
+- 初回表示をブラウザの最優先言語から選択。日本語は日本語、それ以外はEnglishで表示し、Languageメニューで保存した選択を優先します。
+- Choose the initial display from the browser's first language preference: Japanese for Japanese, English otherwise. A saved Language-menu choice takes precedence.
+
 ## v0.7.0 — 2026-10-28
 
 - Added optional A01 inventory and collection-filter entry guidance with a UTC/JST business-date check, preserving the original corpus and checklist.

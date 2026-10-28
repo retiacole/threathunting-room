@@ -1,4 +1,4 @@
-# 学習マップ（v0.8.0）
+# 学習マップ（v0.8.1）
 
 [README](../README.md) · [English](CURRICULUM.en.md) · [操作ガイド](USER_GUIDE.md)
 

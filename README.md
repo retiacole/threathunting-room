@@ -2,7 +2,7 @@
   <img src="docs/images/threathunting-room-banner.png" width="960" alt="月明かりの森で、ランタンと虫眼鏡を使って足跡を調べるThreatHunting-roomのキャラクター">
 </p>
 
-# ThreatHunting-room v0.8.0
+# ThreatHunting-room v0.8.1
 
 [日本語](README.md) · [English](README.en.md)
 
@@ -35,7 +35,7 @@
 
 リポジトリの [threathunting-room.html](threathunting-room.html) を「Download raw file」で保存する方法もあります。操作の詳細は[利用ガイド](docs/USER_GUIDE.md)をご覧ください。
 
-画面上部の **Language** メニューで、日本語・Englishを切り替えられます。課題・ヒント・解説も切り替わり、進捗や入力内容は共通です。調査するログ原文、識別子、検索式の値はそのまま保ちます。
+初回表示はブラウザの最優先言語が日本語なら日本語、それ以外ならEnglishです。画面上部の **Language** メニューで切り替えた言語は、次回以降も優先されます。課題・ヒント・解説も切り替わり、進捗や入力内容は共通です。調査するログ原文、識別子、検索式の値はそのまま保ちます。
 
 ## 学べること
 
