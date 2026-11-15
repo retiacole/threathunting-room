@@ -2,6 +2,12 @@
   <img src="docs/images/threathunting-room-banner.png" width="960" alt="月明かりの森で、ランタンと虫眼鏡を使って足跡を調べるThreatHunting-roomのキャラクター">
 </p>
 
+<p align="center">
+  <a href="https://github.com/retiacole#blue-series"><img src="docs/images/blue-series.svg" width="960" alt="BLUE SERIES — 守るための基礎・検知・調査 / Foundations, detection and investigation"></a>
+</p>
+
+**BLUEシリーズ：守るための基礎・検知・調査。** [シリーズ一覧](https://github.com/retiacole#blue-series) · 弱点と影響の検証を学ぶ別のコース：[REDシリーズ・pentestroom](https://github.com/retiacole/pentestroom)。
+
 # ThreatHunting-room v0.8.2
 
 [日本語](README.md) · [English](README.en.md)
