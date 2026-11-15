@@ -17,7 +17,7 @@ Part of **BLUE SERIES** — foundations, detection, and investigation. [Explore 
 **Form a hypothesis. Follow the traces. Turn evidence into action.**<br>
 *仮説を立てる。痕跡を探す。根拠を次の行動へつなげる。*
 
-[Start learning](https://retiacole.github.io/threathunting-room/) · [Download a single HTML file](https://retiacole.github.io/threathunting-room/threathunting-room.html)
+[Start learning](https://retiacole.github.io/threathunting-room/) · [Download a single HTML file](https://retiacole.github.io/threathunting-room/threathunting-room.html) · [Ask a question or report a problem](https://github.com/retiacole/threathunting-room/issues/new/choose)
 
 **Practice threat hunting, from forming a hypothesis to explaining your findings, entirely in your browser.**
 
@@ -114,9 +114,11 @@ See the [changelog](CHANGELOG.md) for earlier releases, including initial langua
 - [Publishing guide](docs/PUBLISHING.md) — GitHub Pages, downloadable files, and release checks
 - [Changelog](CHANGELOG.md) · [Contributing](CONTRIBUTING.md) · [Security and data handling](SECURITY.md)
 
-## Report a problem or suggest an improvement
+## Questions and problems
 
-Open an issue with the lesson name, reproduction steps, expected result, actual result, and browser name. Suggestions and fixes are welcome through issues and pull requests. Use the included synthetic data to reproduce problems, and leave out personal information and real organizational logs.
+[Ask a question or report a problem](https://github.com/retiacole/threathunting-room/issues/new/choose)
+
+Questions, unclear instructions, and suggestions are welcome in Japanese or English. A GitHub account is required to post. Posts are public: use the course's sample data and leave out company or personal information.
 
 ## License
 

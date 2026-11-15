@@ -17,7 +17,7 @@
 **仮説を立てる。痕跡を探す。根拠を次の行動へつなげる。**<br>
 *Form a hypothesis. Follow the traces. Turn evidence into action.*
 
-[すぐにやってみる](https://retiacole.github.io/threathunting-room/) · [HTML 1個をダウンロード](https://retiacole.github.io/threathunting-room/threathunting-room.html)
+[すぐにやってみる](https://retiacole.github.io/threathunting-room/) · [HTML 1個をダウンロード](https://retiacole.github.io/threathunting-room/threathunting-room.html) · [質問・不具合を報告する](https://github.com/retiacole/threathunting-room/issues/new/choose)
 
 **ブラウザだけで、脅威ハンティングの考え方と調査の進め方を練習する教材です。**
 
@@ -114,9 +114,11 @@ v0.8.1の初期言語選択、v0.8.0の任意小体験など、各版の変更�
 - [公開手順](docs/PUBLISHING.md) — GitHub Pages、配布ファイル、公開前の確認
 - [変更履歴](CHANGELOG.md)・[変更への参加](CONTRIBUTING.md)・[セキュリティとデータの扱い](SECURITY.md)
 
-## 不具合の報告・改善提案
+## 質問・不具合の報告
 
-課題名、操作手順、期待した結果、実際の結果、ブラウザ名を添えてIssueを作成してください。提案や修正案はIssue・Pull Requestで受け付けます。実組織のログや個人情報を含めず、教材のデータで再現できる例をお願いします。
+[質問・不具合を報告する](https://github.com/retiacole/threathunting-room/issues/new/choose)
+
+分かりにくかった点や改善提案も、日本語・英語で受け付けています。投稿にはGitHubアカウントが必要です。内容は公開されるため、社内情報・個人情報は含めず、教材のデータで説明してください。
 
 ## ライセンス
 

@@ -6,6 +6,8 @@ labels: ''
 assignees: ''
 ---
 
+日本語・英語どちらでも受け付けています。投稿内容は公開されます。分かる範囲で記入してください。 / Japanese and English are welcome. Posts are public. Fill in what you know.
+
 <!-- 実組織のログ、認証情報、個人情報を含めないでください。脆弱性はSECURITY.mdの連絡先へ。
 Do not include real organizational logs, credentials, or personal information. Use SECURITY.md for vulnerability reports. -->
 
